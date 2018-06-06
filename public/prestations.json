@@ -2,7 +2,8 @@
   {
     "id": 1,
     "name": "Maquillage",
-    "image": "",
+    "image":
+      "https://images.unsplash.com/photo-1487412840181-f63f62e6a0ee?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b5c9445936d678006111907397caa039&auto=format&fit=crop&w=1350&q=80",
     "description": "",
     "preparations": [
       {
@@ -87,7 +88,8 @@
   {
     "id": 2,
     "name": "Coiffure",
-    "image": "",
+    "image":
+      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5eae2145baa3670c4b4bfa40e6261adc&auto=format&fit=crop&w=1471&q=80",
     "description": "",
     "preparations": [
       {
@@ -169,7 +171,8 @@
   {
     "id": 3,
     "name": "Coupe femmes",
-    "image": "",
+    "image":
+      "https://images.unsplash.com/photo-1440178536296-c1041e136dda?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ad41fe77affb9b099e1c7d800b678f97&auto=format&fit=crop&w=1350&q=80",
     "description": "",
     "preparations": [
       {
@@ -215,7 +218,8 @@
     "id": 4,
     "name": "Vernis",
     "image": "",
-    "description": "",
+    "description":
+      "https://images.unsplash.com/photo-1523283245631-696bf7a521a9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1696172190bf33a6361b2d6eca8549cb&auto=format&fit=crop&w=1350&q=80",
     "preparations": [
       {
         "id": 1,
@@ -237,7 +241,8 @@
   {
     "id": 5,
     "name": "Hommes",
-    "image": "",
+    "image":
+      "https://images.unsplash.com/photo-1473458387542-25eae8ee1345?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=320413e078dd09323be6a477f5253dce&auto=format&fit=crop&w=1350&q=80",
     "description": "",
     "preparations": [
       {
