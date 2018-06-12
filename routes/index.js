@@ -22,8 +22,4 @@ router.get("/shops-prestations", (req, res) => {
   res.json(shopsPrestations);
 });
 
-router.get("/genders-Services", (req, res) => {
-  res.json(gendersServices);
-});
-
 module.exports = router;
