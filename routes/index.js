@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 
 const shopsPrestations = require("../public/shopsPrestations.json");
-const gendersServices = require("../public/gendersServices.json");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
