@@ -26,8 +26,7 @@
     {
       "id": 1,
       "name": "Maquillage",
-      "image":
-        "https://images.unsplash.com/photo-1487412840181-f63f62e6a0ee?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b5c9445936d678006111907397caa039&auto=format&fit=crop&w=1350&q=80",
+      "image": "",
       "description": "",
       "gender": "F",
       "preparations": [
@@ -116,8 +115,7 @@
     {
       "id": 2,
       "name": "Coiffure",
-      "image":
-        "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5eae2145baa3670c4b4bfa40e6261adc&auto=format&fit=crop&w=1471&q=80",
+      "image": "",
       "description": "",
       "gender": "F",
       "preparations": [
@@ -202,58 +200,8 @@
     },
     {
       "id": 3,
-      "name": "Coupe femmes",
-      "image":
-        "https://images.unsplash.com/photo-1440178536296-c1041e136dda?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ad41fe77affb9b099e1c7d800b678f97&auto=format&fit=crop&w=1350&q=80",
-      "description": "",
-      "gender": "F",
-      "preparations": [
-        {
-          "id": 1,
-          "selected": false,
-          "titlePreparation": "Coupe classique",
-          "duration": {
-            "minutes": 20
-          },
-          "price": 16,
-          "choices": [
-            {
-              "id": 1,
-              "title": "Coupes classiques",
-              "options": [
-                "Des coupes droites",
-                "Des coupes de pointes",
-                "Des dégradés simples"
-              ]
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "selected": false,
-          "titlePreparation": "Coupe très stylisée",
-          "duration": {
-            "minutes": 30
-          },
-          "price": 24,
-          "choices": [
-            {
-              "id": 1,
-              "title": "Coupes très stylisées",
-              "options": [
-                "Des coupes très dégradées",
-                "Des coupes spéciales changement de look (exemple: carré plongeant sur cheveux longs)"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 4,
       "name": "Vernis",
-      "image":
-        "https://images.unsplash.com/photo-1523283245631-696bf7a521a9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1696172190bf33a6361b2d6eca8549cb&auto=format&fit=crop&w=1350&q=80",
+      "image": "",
       "description": "",
       "gender": "F",
       "preparations": [
@@ -276,17 +224,16 @@
       ]
     },
     {
-      "id": 5,
-      "name": "Hommes",
-      "image":
-        "https://images.unsplash.com/photo-1473458387542-25eae8ee1345?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=320413e078dd09323be6a477f5253dce&auto=format&fit=crop&w=1350&q=80",
+      "id": 4,
+      "name": "Coiffure",
+      "image": "",
       "description": "",
       "gender": "M",
       "preparations": [
         {
           "id": 1,
           "selected": false,
-          "titlePreparation": "Coupe et coiffage",
+          "titlePreparation": "Coupe 1",
           "duration": {
             "minutes": 20
           },
@@ -302,18 +249,45 @@
         {
           "id": 2,
           "selected": false,
-          "titlePreparation": "Barbe",
+          "titlePreparation": "Coupe 2",
           "duration": {
-            "minutes": 10
+            "minutes": 20
           },
-          "price": 7.5,
+          "price": 16,
           "choices": [
             {
               "id": 1,
-              "title": "Taille de barbe simple",
+              "title": "Coupe et stylling",
               "options": []
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Barbe",
+      "image": "",
+      "description": "",
+      "gender": "M",
+      "preparations": [
+        {
+          "id": 1,
+          "selected": false,
+          "titlePreparation": "Barbe 1",
+          "duration": {
+            "minutes": 20
+          },
+          "price": 16
+        },
+        {
+          "id": 2,
+          "selected": false,
+          "titlePreparation": "Barbe 2",
+          "duration": {
+            "minutes": 20
+          },
+          "price": 16
         }
       ]
     }
