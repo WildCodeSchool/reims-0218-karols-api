@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const prestations = require("../public/prestations.json");
+const shopsPrestations = require("../public/shopsPrestations.json");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -17,8 +17,8 @@ router.get("/test", (req, res) => {
   res.json(test);
 });
 
-router.get("/prestations", (req, res) => {
-  res.json(prestations);
+router.get("/shops-prestations", (req, res) => {
+  res.json(shopsPrestations);
 });
 
 module.exports = router;
