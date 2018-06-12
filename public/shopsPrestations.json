@@ -2,17 +2,23 @@
   "shops": [
     {
       "id": 1,
-      "name": "Paris",
+      "city": "Paris",
+      "address": "75000",
+      "image": "",
       "selected": false
     },
     {
       "id": 2,
-      "name": "Lyon",
+      "city": "Lyon",
+      "address": "69000",
+      "image": "",
       "selected": false
     },
     {
       "id": 3,
-      "name": "Cannes",
+      "city": "Cannes",
+      "address": "06150",
+      "image": "",
       "selected": false
     }
   ],
@@ -23,9 +29,11 @@
       "image":
         "https://images.unsplash.com/photo-1487412840181-f63f62e6a0ee?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b5c9445936d678006111907397caa039&auto=format&fit=crop&w=1350&q=80",
       "description": "",
+      "gender": "F",
       "preparations": [
         {
           "id": 1,
+          "selected": false,
           "titlePreparation":
             "Maquillage' focus sur un élément' ou 'effet bonne mine' (au choix)",
           "duration": {
@@ -54,6 +62,7 @@
         },
         {
           "id": 2,
+          "selected": false,
           "titlePreparation": "Maquillage KAROLS",
           "duration": {
             "minutes": 30
@@ -80,6 +89,7 @@
         },
         {
           "id": 3,
+          "selected": false,
           "titlePreparation": "Maquillage ultime",
           "duration": {
             "minutes": 45
@@ -109,9 +119,11 @@
       "image":
         "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5eae2145baa3670c4b4bfa40e6261adc&auto=format&fit=crop&w=1471&q=80",
       "description": "",
+      "gender": "F",
       "preparations": [
         {
           "id": 1,
+          "selected": false,
           "titlePreparation": "Coiffure stylisée",
           "duration": {
             "minutes": 20
@@ -137,6 +149,7 @@
         },
         {
           "id": 2,
+          "selected": false,
           "titlePreparation": "Coiffure stylisée élaborée",
           "duration": {
             "minutes": 30
@@ -162,6 +175,7 @@
         },
         {
           "id": 3,
+          "selected": false,
           "titlePreparation": "Coiffure stylisée très élaborée",
           "duration": {
             "minutes": 45
@@ -192,9 +206,11 @@
       "image":
         "https://images.unsplash.com/photo-1440178536296-c1041e136dda?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ad41fe77affb9b099e1c7d800b678f97&auto=format&fit=crop&w=1350&q=80",
       "description": "",
+      "gender": "F",
       "preparations": [
         {
           "id": 1,
+          "selected": false,
           "titlePreparation": "Coupe classique",
           "duration": {
             "minutes": 20
@@ -214,6 +230,7 @@
         },
         {
           "id": 2,
+          "selected": false,
           "titlePreparation": "Coupe très stylisée",
           "duration": {
             "minutes": 30
@@ -235,12 +252,14 @@
     {
       "id": 4,
       "name": "Vernis",
-      "image": "",
-      "description":
+      "image":
         "https://images.unsplash.com/photo-1523283245631-696bf7a521a9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1696172190bf33a6361b2d6eca8549cb&auto=format&fit=crop&w=1350&q=80",
+      "description": "",
+      "gender": "F",
       "preparations": [
         {
           "id": 1,
+          "selected": false,
           "titlePreparation": "Pose de vernis au choix",
           "duration": {
             "minutes": 10
@@ -262,9 +281,11 @@
       "image":
         "https://images.unsplash.com/photo-1473458387542-25eae8ee1345?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=320413e078dd09323be6a477f5253dce&auto=format&fit=crop&w=1350&q=80",
       "description": "",
+      "gender": "M",
       "preparations": [
         {
           "id": 1,
+          "selected": false,
           "titlePreparation": "Coupe et coiffage",
           "duration": {
             "minutes": 20
@@ -280,6 +301,7 @@
         },
         {
           "id": 2,
+          "selected": false,
           "titlePreparation": "Barbe",
           "duration": {
             "minutes": 10
