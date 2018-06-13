@@ -210,6 +210,56 @@
     },
     {
       "id": 3,
+      "name": "Coupes",
+      "image": "",
+      "description": "",
+      "gender": "F",
+      "preparations": [
+        {
+          "id": 1,
+          "selected": false,
+          "image": "http://localhost:8000/images/preparation3.1.png",
+          "titlePreparation": "Coupe classique",
+          "duration": {
+            "minutes": 20
+          },
+          "price": 16,
+          "choices": [
+            {
+              "id": 1,
+              "title": "Coiffure personnalisable",
+              "options": [
+                "Des coupes droites",
+                "Des coupes de pointes",
+                "Des dégradés simples"
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "selected": false,
+          "image": "http://localhost:8000/images/preparation3.2.png",
+          "titlePreparation": "Coupe très stylisée",
+          "duration": {
+            "minutes": 30
+          },
+          "price": 24,
+          "choices": [
+            {
+              "id": 1,
+              "title": "",
+              "options": [
+                "Des coupes très dégradées",
+                "Des coupes spéciales changements de look (ex: carré plongeant sur cheveux longs"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
       "name": "Vernis",
       "image": "",
       "description": "",
@@ -235,7 +285,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Coiffure",
       "image": "",
       "description": "",
@@ -277,7 +327,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Barbe",
       "image": "",
       "description": "",
