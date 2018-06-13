@@ -36,6 +36,7 @@
         {
           "id": 1,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation1.1.png",
           "titlePreparation":
             "Maquillage' focus sur un élément' ou 'effet bonne mine' (au choix)",
           "duration": {
@@ -65,6 +66,7 @@
         {
           "id": 2,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation1.2.png",
           "titlePreparation": "Maquillage KAROLS",
           "duration": {
             "minutes": 30
@@ -92,6 +94,8 @@
         {
           "id": 3,
           "selected": false,
+          "image":
+            "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5aa1d44d3153feb30a3ac5dbf9bbccd3&auto=format&fit=crop&w=1051&q=80",
           "titlePreparation": "Maquillage ultime",
           "duration": {
             "minutes": 45
@@ -125,6 +129,7 @@
         {
           "id": 1,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation2.1.png",
           "titlePreparation": "Coiffure stylisée",
           "duration": {
             "minutes": 20
@@ -151,6 +156,7 @@
         {
           "id": 2,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation2.2.jpg",
           "titlePreparation": "Coiffure stylisée élaborée",
           "duration": {
             "minutes": 30
@@ -177,6 +183,7 @@
         {
           "id": 3,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation2.3.png",
           "titlePreparation": "Coiffure stylisée très élaborée",
           "duration": {
             "minutes": 45
@@ -211,6 +218,7 @@
         {
           "id": 1,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation7.jpg",
           "titlePreparation": "Pose de vernis au choix",
           "duration": {
             "minutes": 10
@@ -236,6 +244,7 @@
         {
           "id": 1,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation10.png",
           "titlePreparation": "Coupe 1",
           "duration": {
             "minutes": 20
@@ -277,6 +286,7 @@
         {
           "id": 1,
           "selected": false,
+          "image": "http://localhost:8000/images/preparation11.png",
           "titlePreparation": "Barbe 1",
           "duration": {
             "minutes": 20
