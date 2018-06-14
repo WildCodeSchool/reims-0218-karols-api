@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const shopsPrestations = require("../public/shopsPrestations.json");
-const days = require("../timeslots/timeslots.test.js");
+const days = require("../timeslots/timeslot");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
