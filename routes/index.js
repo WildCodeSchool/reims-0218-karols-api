@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const shopsPrestations = require("../public/shopsPrestations.json");
+const days = require("../timeslots/timeslots.test.js");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -19,6 +20,10 @@ router.get("/test", (req, res) => {
 
 router.get("/shops-prestations", (req, res) => {
   res.json(shopsPrestations);
+});
+
+router.get("/timeslots", (req, res) => {
+  res.json(days);
 });
 
 module.exports = router;
