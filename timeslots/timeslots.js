@@ -64,23 +64,22 @@ const dayOne = DateTime.fromObject({
 
 const createWeekTimeSlots = date => {
   // determiner la date du jour 1
-  const dayOne = DateTime.fromObject({
-    day: 14,
-    month: 6,
-    hour: 15,
-    minute: 0,
-    year: 2018
-  });
   // declarer un tableau vide days
   const dayArray = [];
+  const day = date.minus({ days: 2 });
   // faire une boucle qui passe 5 fois
   for (let i = 0; i < 5; i++) {
-    console.log(createDayTimeSlots(startTime, endTime));
-    dayArray.push(createDayTimeSlots(startTime, endTime));
+    dayArray.push({
+      date: day,
+      timeSlots: createDayTimeSlots(
+        day.plus({ days: i }).set({ hour: 9 }),
+        day.plus({ days: i }).set({ hour: 18 })
+      )
+    });
   }
+  return dayArray;
   // determiner la  day = date +i jour
-  console.log();
-
+  //startTime.plus({ days: i }), endTime.plus({ days: i })
   // ajouter à days l'objet suivant
   /*day
     {
@@ -91,5 +90,5 @@ const createWeekTimeSlots = date => {
 };
 
 console.log(
-  createDayTimeSlots(startTime.plus({ days: 1 }), endTime.plus({ days: 1 }))
+  createWeekTimeSlots(DateTime.fromObject({ year: 2018, month: 6, day: 28 }))
 );
