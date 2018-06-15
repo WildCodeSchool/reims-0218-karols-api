@@ -1,15 +1,15 @@
 var express = require("express");
 var router = express.Router();
 
-const shopsPrestations = require("../public/shopsPrestations.json");
-const days = require("../timeslots/timeslots");
+var shopsPrestations = require("../public/shopsPrestations.json");
+var days = require("../timeslots/timeslots");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-const test = {
+var test = {
   name: "khalid",
   say: "Hello"
 };
