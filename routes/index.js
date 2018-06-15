@@ -1,8 +1,9 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const { DateTime } = require("luxon");
 
-var shopsPrestations = require("../public/shopsPrestations.json");
-var days = require("../timeslots/timeslots");
+const shopsPrestations = require("../public/shopsPrestations.json");
+const createWeekTimeSlots = require("../timeslots/timeslots");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -23,7 +24,15 @@ router.get("/shops-prestations", (req, res) => {
 });
 
 router.get("/timeslots", (req, res) => {
-  res.json(days);
+  res.json(
+    createWeekTimeSlots(
+      DateTime.fromObject({
+        day: 27,
+        month: 7,
+        year: 2018
+      })
+    )
+  );
 });
 
 module.exports = router;

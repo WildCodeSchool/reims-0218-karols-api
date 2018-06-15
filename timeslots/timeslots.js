@@ -40,7 +40,7 @@ const createWeekTimeSlots = date => {
     //  -> boucle qui passe 5 fois
     dayArray.push({
       // On pousse dans le tableau vide les timeSlots crées pour chaque jour
-      date: day,
+      date: day.plus({ days: i }),
       timeSlots: createDayTimeSlots(
         day.plus({ days: i }).set({ hour: 9 }),
         day.plus({ days: i }).set({ hour: 18 })
@@ -59,6 +59,4 @@ const createWeekTimeSlots = date => {
   */
 };
 
-console.log(
-  createWeekTimeSlots(DateTime.fromObject({ year: 2018, month: 6, day: 28 }))
-);
+module.exports = createWeekTimeSlots;
