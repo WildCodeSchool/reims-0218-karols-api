@@ -40,7 +40,10 @@ const createWeekTimeSlots = date => {
     //  -> boucle qui passe 5 fois
     dayArray.push({
       // On pousse dans le tableau vide les timeSlots crées pour chaque jour
-      date: day.plus({ days: i }),
+      date: day
+        .plus({ days: i })
+        .setLocale("fr")
+        .toLocaleString(DateTime.DATETIME_FULL),
       timeSlots: createDayTimeSlots(
         day.plus({ days: i }).set({ hour: 9 }),
         day.plus({ days: i }).set({ hour: 18 })
