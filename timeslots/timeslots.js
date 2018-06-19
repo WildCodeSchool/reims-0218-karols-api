@@ -41,9 +41,7 @@ const createWeekTimeSlots = date => {
     dayArray.push({
       // On pousse dans le tableau vide les timeSlots crées pour chaque jour
       date: day
-        .plus({ days: i })
-        .setLocale("fr")
-        .toLocaleString(DateTime.DATETIME_FULL),
+        .plus({ days: i }),
       timeSlots: createDayTimeSlots(
         day.plus({ days: i }).set({ hour: 9 }),
         day.plus({ days: i }).set({ hour: 18 })
