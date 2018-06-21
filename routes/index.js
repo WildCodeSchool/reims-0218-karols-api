@@ -35,4 +35,9 @@ router.get("/timeslots", (req, res) => {
   );
 });
 
+router.get("/date-selected/:date", (req, res) => {
+  console.log("date : ", req.params.date);
+  res.send(createWeekTimeSlots(DateTime.fromISO(req.params.date)));
+});
+
 module.exports = router;
