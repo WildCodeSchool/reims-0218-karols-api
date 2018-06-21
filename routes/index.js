@@ -10,6 +10,11 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
 });
 
+// POST method route
+router.post("/", function(req, res) {
+  res.send("POST request to the homepage");
+});
+
 var test = {
   name: "khalid",
   say: "Hello"
@@ -38,6 +43,10 @@ router.get("/timeslots", (req, res) => {
 router.get("/date-selected/:date", (req, res) => {
   console.log("date : ", req.params.date);
   res.send(createWeekTimeSlots(DateTime.fromISO(req.params.date)));
+});
+
+router.post("/reservations", function(req, res) {
+  res.send("reservation faite");
 });
 
 module.exports = router;
