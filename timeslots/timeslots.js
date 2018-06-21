@@ -20,6 +20,7 @@ const endTime = DateTime.fromObject({
 const createTimeSlot = time => ({
   // On crée une fonction qui va créer les timeSlot et on lui passe en parametres time
   available: true,
+  selected: false,
   time
 })
 
