@@ -38,7 +38,7 @@ router.get("/timeslots", (req, res) => {
 })
 
 router.post("/reservations", (req, res) => {
-  console.log("body", req.body)
+  //console.log("body", req.body)
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -46,23 +46,36 @@ router.post("/reservations", (req, res) => {
       pass: "eRwKiiPwSpMr56wXCD"
     }
   })
-  console.log("coucou")
   // parametre l'objet reservation ,
   // module.export : sendMail
 
   smtpTransport.sendMail(
     {
-      from: "Valbuenaaaa <marlowdevweb@gmail.com>", // Expediteur
+      from: "KAROLS <marlowdevweb@gmail.com>", // Expediteur
       to: "marlot.tanguy@orange.fr", // Destinataires
-      subject: "bijour la famille Benzema en EDF !", // Sujet
-      text: "Coucou Zahia :coche_trait_plein:", // plaintext body
-      html: "<b>Hello worldd :coche_trait_plein:</b>" // html body
+      subject: `Confirmation de votre réservation à ${
+        req.body.selectedShop.city
+      }`, // Sujet
+      html: `<h1 style="margin-bottom: 10px;"> Hey ${
+        req.body.selectedForm.firstName
+      } !</h1><p  style="font-size: 20px;">Vous avez réservé pour ${
+        req.body.selectedShop.city
+      }</p>
+
+      Vous avez pris les préparations ci-dessous :
+      <ul style="list-style-type: none;">
+      ${req.body.selectedPreparations.map(
+        service => `<li>${service.preparations[0].titlePreparation}</li>`
+      )}
+      </ul>
+      
+      <footer><img src="http://localhost:8000/images/logoEmail.png"/></footer>`
     },
     (error, response) => {
       if (error) {
         console.log(error)
       } else {
-        console.log("Message sent: Benzouille ")
+        console.log("Message sent: Confirmation de mail envoyée ")
       }
     }
   )
