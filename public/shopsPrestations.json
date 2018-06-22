@@ -307,22 +307,6 @@
               "options": []
             }
           ]
-        },
-        {
-          "id": 2,
-          "selected": false,
-          "titlePreparation": "Coupe 2",
-          "duration": {
-            "minutes": 20
-          },
-          "price": 16,
-          "choices": [
-            {
-              "id": 1,
-              "title": "Coupe et stylling",
-              "options": []
-            }
-          ]
         }
       ]
     },
@@ -338,15 +322,6 @@
           "selected": false,
           "image": "http://localhost:8000/images/preparation11.png",
           "titlePreparation": "Barbe 1",
-          "duration": {
-            "minutes": 20
-          },
-          "price": 16
-        },
-        {
-          "id": 2,
-          "selected": false,
-          "titlePreparation": "Barbe 2",
           "duration": {
             "minutes": 20
           },
