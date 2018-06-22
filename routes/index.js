@@ -38,7 +38,7 @@ router.get("/timeslots", (req, res) => {
 })
 
 router.post("/reservations", (req, res) => {
-  //console.log("body", req.body)
+  console.log("body", req.body)
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -52,7 +52,7 @@ router.post("/reservations", (req, res) => {
   smtpTransport.sendMail(
     {
       from: "KAROLS <marlowdevweb@gmail.com>", // Expediteur
-      to: "marlot.tanguy@orange.fr", // Destinataires
+      to: `${req.body.selectedForm.email}`, // Destinataires
       subject: `Confirmation de votre réservation à ${
         req.body.selectedShop.city
       }`, // Sujet
@@ -69,7 +69,7 @@ router.post("/reservations", (req, res) => {
       )}
       </ul>
       
-      <footer><img src="http://localhost:8000/images/logoEmail.png"/></footer>`
+      <footer><img src="https://image.noelshack.com/fichiers/2018/25/5/1529659014-logoemail.png"/></footer>`
     },
     (error, response) => {
       if (error) {
