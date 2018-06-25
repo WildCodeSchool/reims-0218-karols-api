@@ -1,29 +1,29 @@
-const express = require("express");
-const router = express.Router();
-const { DateTime } = require("luxon");
+const express = require("express")
+const router = express.Router()
+const { DateTime } = require("luxon")
 
-const shopsPrestations = require("../public/shopsPrestations.json");
-const createWeekTimeSlots = require("../timeslots/timeslots");
+const shopsPrestations = require("../public/shopsPrestations.json")
+const createWeekTimeSlots = require("../timeslots/timeslots")
 
-const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "Express" });
-});
+  res.render("index", { title: "Express" })
+})
 
 // POST method route
 router.post("/", function(req, res) {
-  res.send("POST request to the homepage");
-});
+  res.send("POST request to the homepage")
+})
 
 router.get("/test", (req, res) => {
-  res.json(test);
-});
+  res.json(test)
+})
 
 router.get("/shops-prestations", (req, res) => {
-  res.json(shopsPrestations);
-});
+  res.json(shopsPrestations)
+})
 
 router.get("/timeslots", (req, res) => {
   res.json(
@@ -34,22 +34,22 @@ router.get("/timeslots", (req, res) => {
         year: 2018
       })
     )
-  );
-});
+  )
+})
 
 router.post("/reservations", (req, res) => {
-  console.log("body", req.body);
+  console.log("body", req.body)
   res.json({
     name: "Reservation",
     status: "succes"
-  });
+  })
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
       user: "marlowdevweb@gmail.com",
       pass: "eRwKiiPwSpMr56wXCD"
     }
-  });
+  })
   // parametre l'objet reservation ,
   // module.export : sendMail
 
@@ -77,17 +77,17 @@ router.post("/reservations", (req, res) => {
     },
     (error, response) => {
       if (error) {
-        console.log(error);
+        console.log(error)
       } else {
-        console.log("Message sent: Confirmation de mail envoyée ");
+        console.log("Message sent: Confirmation de mail envoyée ")
       }
     }
-  );
-});
+  )
+})
 
 router.get("/date-selected/:date", (req, res) => {
-  console.log("date : ", req.params.date);
-  res.send(createWeekTimeSlots(DateTime.fromISO(req.params.date)));
-});
+  console.log("date : ", req.params.date)
+  res.send(createWeekTimeSlots(DateTime.fromISO(req.params.date)))
+})
 
-module.exports = router;
+module.exports = router
