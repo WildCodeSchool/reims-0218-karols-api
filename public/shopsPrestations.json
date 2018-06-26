@@ -37,6 +37,7 @@
           "id": 1,
           "selected": false,
           "image": "http://localhost:8000/images/preparation1.1.png",
+          "info": "http://palf.free.fr/portrait/vocabulaire.htm",
           "titlePreparation":
             "Maquillage' focus sur un élément' ou 'effet bonne mine' (au choix)",
           "duration": {
@@ -96,6 +97,7 @@
           "selected": false,
           "image":
             "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5aa1d44d3153feb30a3ac5dbf9bbccd3&auto=format&fit=crop&w=1051&q=80",
+            "info": "http://palf.free.fr/portrait/vocabulaire.htm",
           "titlePreparation": "Maquillage ultime",
           "duration": {
             "minutes": 45
@@ -321,6 +323,7 @@
           "id": 1,
           "selected": false,
           "image": "http://localhost:8000/images/preparation11.png",
+          "info": "http://palf.free.fr/portrait/vocabulaire.htm",
           "titlePreparation": "Barbe 1",
           "duration": {
             "minutes": 20
