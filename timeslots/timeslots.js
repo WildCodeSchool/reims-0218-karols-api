@@ -36,47 +36,23 @@ const createWeekTimeSlots = date => {
   // On crée une fonction pour créer des timeslots par semaine de 5 jours
   // determiner la date du jour 1
   const dayArray = [] // declarer un tableau vide days
-  var today = new Date // Date du jour
-  var todayISO = DateTime.fromJSDate(today).toISODate() // Conversion en ISO de la date
-  var dateSelectedISO = DateTime.fromISO(date).toISODate()
-  console.log('date iso : ', todayISO)
-  console.log('date iso : ', dateSelectedISO)
-  console.log('equal', todayISO === dateSelectedISO)
+  const today = DateTime.local()
+  const dateSelected = DateTime.fromISO(date)
 
-  const day = date.minus({ days: 0 }) // On definit une constante day qui va debuté a jour actuel moins 2 jours
-  if (todayISO === dateSelectedISO) {
-    console.log('la date est identique')
-    for (let i = 0; i < 5; i++) {
-      //  -> boucle qui passe 5 fois
-      dayArray.push({
-        // On pousse dans le tableau vide les timeSlots crées pour chaque jour
-        date: day.plus({ days: i }),
-        timeSlots: createDayTimeSlots(
-          day.plus({ days: i }).set({ hour: 9 }),
-          day.plus({ days: i }).set({ hour: 18 })
-        )
-      })
-    }
-    return dayArray
-  } else {
-    console.log('la date est différente')
-    const day = date.minus({ days: 2 }) // On definit une constante day qui va debuté a jour actuel moins 2 jours
-    for (let i = 0; i < 5; i++) {
-      //  -> boucle qui passe 5 fois
-      dayArray.push({
-        // On pousse dans le tableau vide les timeSlots crées pour chaque jour
-        date: day.plus({ days: i }),
-        timeSlots: createDayTimeSlots(
-          day.plus({ days: i }).set({ hour: 9 }),
-          day.plus({ days: i }).set({ hour: 18 })
-        )
-      })
-    }
-    return dayArray
-    
+  const day = Interval.fromDateTimes(today, dateSelected).length("days") > 1 ? date.minus({days: 2}): today
+
+  for (let i = 0; i < 5; i++) {
+    //  -> boucle qui passe 5 fois
+    dayArray.push({
+      // On pousse dans le tableau vide les timeSlots crées pour chaque jour
+      date: day.plus({ days: i }),
+      timeSlots: createDayTimeSlots(
+        day.plus({ days: i }).set({ hour: 9 }),
+        day.plus({ days: i }).set({ hour: 18 })
+      )
+    })
   }
-  
-  
+  return dayArray
 }
 
   // determiner la  day = date +i jour
