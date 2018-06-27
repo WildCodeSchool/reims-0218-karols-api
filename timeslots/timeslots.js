@@ -1,4 +1,4 @@
-const { Interval, DateTime } = require("luxon")
+const { Interval, DateTime, Duration } = require("luxon")
 
 const startTime = DateTime.fromObject({
   // On definit l'heure de debut du timeSlot
@@ -36,7 +36,11 @@ const createWeekTimeSlots = date => {
   // On crée une fonction pour créer des timeslots par semaine de 5 jours
   // determiner la date du jour 1
   const dayArray = [] // declarer un tableau vide days
-  const day = date.minus({ days: 2 }) // On definit une constante day qui va debuté a jour actuel moins 2 jours
+  const today = DateTime.local()
+  const dateSelected = DateTime.fromISO(date)
+
+  const day = Interval.fromDateTimes(today, dateSelected).length("days") > 1 ? date.minus({days: 2}): today
+
   for (let i = 0; i < 5; i++) {
     //  -> boucle qui passe 5 fois
     dayArray.push({
@@ -49,6 +53,8 @@ const createWeekTimeSlots = date => {
     })
   }
   return dayArray
+}
+
   // determiner la  day = date +i jour
   //startTime.plus({ days: i }), endTime.plus({ days: i })
   // ajouter à days l'objet suivant
@@ -58,6 +64,5 @@ const createWeekTimeSlots = date => {
       timeSlots: createDayTimeSlots(day 9h,  18h)
     }
   */
-}
 
 module.exports = createWeekTimeSlots
