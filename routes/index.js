@@ -38,7 +38,7 @@ router.get("/timeslots", (req, res) => {
 })
 
 router.post("/reservations", (req, res) => {
-  console.log("body", req.body)
+  console.log("body de Tanguy", req.body.selectedTimeSlot.time.s)
   res.json({
     name: "Reservation",
     success: true
@@ -72,6 +72,7 @@ router.post("/reservations", (req, res) => {
         service => `<li>${service.preparations[0].titlePreparation}</li>`
       )}
       </ul>
+      <p> Vous serez pris en charge le ${req.body.selectedTimeSlot.time.s} </p>
       
       <footer><img src="https://image.noelshack.com/fichiers/2018/25/5/1529659014-logoemail.png"/></footer>`
     },
