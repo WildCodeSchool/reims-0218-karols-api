@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { DateTime } = require("luxon")
+const { DateTime, Interval } = require("luxon")
 
 const shopsPrestations = require("../public/shopsPrestations.json")
 const createWeekTimeSlots = require("../timeslots/timeslots")
@@ -43,6 +43,14 @@ router.post("/reservations", (req, res) => {
     name: "Reservation",
     success: true
   })
+
+  const transformTimeSlot = timeSlot =>
+    DateTime.fromISO(req.body.selectedTimeSlot.time.s)
+      .setLocale("fr")
+      .toFormat("cccc dd LLLL HH 'h' mm")
+
+  console.log(transformTimeSlot("2018-06-29T09:15:00.000+02:00"))
+
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -72,7 +80,11 @@ router.post("/reservations", (req, res) => {
         service => `<li>${service.preparations[0].titlePreparation}</li>`
       )}
       </ul>
-      <p> Vous serez pris en charge le ${req.body.selectedTimeSlot.time.s} </p>
+      <p> Vous serez pris en charge le ${DateTime.fromISO(
+        req.body.selectedTimeSlot.time.s
+      )
+        .setLocale("fr")
+        .toFormat("cccc dd LLLL HH 'h' mm")} </p>
       
       <footer><img src="https://image.noelshack.com/fichiers/2018/25/5/1529659014-logoemail.png"/></footer>`
     },
