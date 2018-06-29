@@ -1,11 +1,12 @@
 const express = require("express")
 const router = express.Router()
 const { DateTime, Interval } = require("luxon")
+const nodemailer = require("nodemailer")
 
 const shopsPrestations = require("../public/shopsPrestations.json")
 const createWeekTimeSlots = require("../timeslots/timeslots")
 
-const nodemailer = require("nodemailer")
+const Shop = require("../models/shop")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -17,8 +18,14 @@ router.post("/", function(req, res) {
   res.send("POST request to the homepage")
 })
 
-router.get("/test", (req, res) => {
-  res.json(test)
+router.get("/shops", (req, res) => {
+  // get the shops collection
+  Shop.find((err, shops) => {
+    if (err) {
+      res.send(err)
+    }
+    res.json(shops)
+  })
 })
 
 router.get("/shops-prestations", (req, res) => {
