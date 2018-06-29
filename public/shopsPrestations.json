@@ -36,6 +36,7 @@
         {
           "id": 1,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation1.1.png",
           "info":
             "https://www.mille-et-une-bieres.fr/les-boutiques/boutique-de-reims/",
@@ -68,6 +69,7 @@
         {
           "id": 2,
           "selected": false,
+          "count": 0,
           "image": "http://mille-et-une-bieres-champigny.business.site/",
           "info":
             "https://www.1jour1vin.com/fr/vin-champagne?s=GOOGLE-RWD&o=295&p=2&v=wmPr87&gclid=CjwKCAjw68zZBRAnEiwACw0eYRL1riv_mm8L8uRt-zi9RK1rolzk73MRDXJo2mfMnEFP2taCbpUTQRoCMAEQAvD_BwE",
@@ -98,6 +100,7 @@
         {
           "id": 3,
           "selected": false,
+          "count": 0,
           "image":
             "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5aa1d44d3153feb30a3ac5dbf9bbccd3&auto=format&fit=crop&w=1051&q=80",
           "titlePreparation": "Maquillage ultime",
@@ -134,6 +137,7 @@
         {
           "id": 1,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation2.1.png",
           "info":
             "https://www.vinatis.com/spiritueux-vodka#p1&n15&t7&f[]73[]190577:f[]27[]11427[]s",
@@ -163,6 +167,7 @@
         {
           "id": 2,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation2.2.jpg",
           "info":
             "https://www.wildness.fr/lancer-de-haches/?gclid=CjwKCAjw68zZBRAnEiwACw0eYajjlmS25u_as-TS4g-mMReBSk90FEYk2CVuzZpN3DtwNGx0Yy3RbhoCZ8sQAvD_BwE",
@@ -192,6 +197,7 @@
         {
           "id": 3,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation2.3.png",
           "titlePreparation": "Coiffure stylisée très élaborée",
           "duration": {
@@ -227,6 +233,7 @@
         {
           "id": 1,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation3.1.png",
           "titlePreparation": "Coupe classique",
           "duration": {
@@ -248,6 +255,7 @@
         {
           "id": 2,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation3.2.png",
           "titlePreparation": "Coupe très stylisée",
           "duration": {
@@ -277,6 +285,7 @@
         {
           "id": 1,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation7.jpg",
           "titlePreparation": "Pose de vernis au choix",
           "duration": {
@@ -303,6 +312,7 @@
         {
           "id": 1,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation10.png",
           "titlePreparation": "Coupe 1",
           "duration": {
@@ -329,6 +339,7 @@
         {
           "id": 1,
           "selected": false,
+          "count": 0,
           "image": "http://localhost:8000/images/preparation11.png",
           "info": "http://palf.free.fr/portrait/vocabulaire.htm",
           "titlePreparation": "Barbe 1",
