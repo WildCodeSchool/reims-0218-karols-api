@@ -8,6 +8,9 @@ const cors = require("cors")
 const indexRouter = require("./routes/index")
 const usersRouter = require("./routes/users")
 
+var mongo_express = require("mongo-express/lib/middleware")
+var mongo_express_config = require("./mongo_express_config")
+
 const app = express()
 
 // view engine setup
@@ -23,6 +26,8 @@ app.use(cors())
 
 app.use("/", indexRouter)
 app.use("/users", usersRouter)
+
+app.use("/mongo_express", mongo_express(mongo_express_config))
 
 app.all("/*", function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
