@@ -4,6 +4,8 @@
 
 Follow this [link](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
 
+Start MongoD as a service
+
 ## Run migrations to populate the db
 
 Run in the console (in the backend dir):
