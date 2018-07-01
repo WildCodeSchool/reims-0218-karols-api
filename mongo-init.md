@@ -18,6 +18,8 @@ Run in the console (in the backend dir):
 
 [http://localhost:8000/mongo_express](http://localhost:8000/mongo_express)
 
+admin/pass
+
 ## Add migrations
 
 [doc](https://github.com/emirotin/mongodb-migrations#creating-migrations)
