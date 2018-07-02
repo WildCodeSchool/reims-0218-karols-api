@@ -201,11 +201,7 @@ const bookings = [
   }
 ]
 
-const validateBookingIntervals = (
-  bookingIntervals,
-  bookings,
-  exampleResources
-) => null
+const validateBookingIntervals = (bookingIntervals, bookings, resources) => null
 
 describe("validateBookingIntervals", () => {
   it("should return true if no intervals overlaps with booking", () => {
@@ -317,6 +313,125 @@ describe("validateBookingIntervals", () => {
 
     assert.isFalse(
       validateBookingIntervals(
+        invalidBookingIntervals,
+        bookings,
+        exampleResources
+      )
+    )
+  })
+})
+
+const validateBookingIntervalsHours = (bookingIntervals, bookings, resources) =>
+  null
+
+describe("validateBookingIntervalsHours", () => {
+  it("should return true if bookings intervals are during opening hours", () => {
+    const time = {
+      year: 2018,
+      month: 7,
+      day: 9,
+      hour: 11
+    }
+    const i1ToTest = Interval.after(time, { minutes: 20 })
+    const i2ToTest = Interval.after(i1ToTest.end, { minutes: 30 })
+    const i3ToTest = Interval.after(i2ToTest.end, { minutes: 10 })
+
+    const validBookingIntervals = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT",
+        interval: i1ToTest
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE-F",
+        interval: i2ToTest
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        interval: i3ToTest
+      }
+    ]
+
+    assert.isTrue(
+      validateBookingIntervalsHours(
+        validBookingIntervals,
+        bookings,
+        exampleResources
+      )
+    )
+  })
+
+  it("should return true if bookings intervals are during opening hours", () => {
+    const time = {
+      year: 2018,
+      month: 7,
+      day: 9,
+      hour: 16
+    }
+    const i1ToTest = Interval.after(time, { minutes: 20 })
+    const i2ToTest = Interval.after(i1ToTest.end, { minutes: 30 })
+    const i3ToTest = Interval.after(i2ToTest.end, { minutes: 10 })
+
+    const validBookingIntervals = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT",
+        interval: i1ToTest
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE-F",
+        interval: i2ToTest
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        interval: i3ToTest
+      }
+    ]
+
+    assert.isTrue(
+      validateBookingIntervalsHours(
+        validBookingIntervals,
+        bookings,
+        exampleResources
+      )
+    )
+  })
+  it("should return false if bookings intervals are not during opening hours", () => {
+    const time = {
+      year: 2018,
+      month: 7,
+      day: 9,
+      hour: 11,
+      minute: 30
+    }
+    const i1ToTest = Interval.after(time, { minutes: 20 })
+    const i2ToTest = Interval.after(i1ToTest.end, { minutes: 30 })
+    const i3ToTest = Interval.after(i2ToTest.end, { minutes: 10 })
+
+    const invalidBookingIntervals = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT",
+        interval: i1ToTest
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE-F",
+        interval: i2ToTest
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        interval: i3ToTest
+      }
+    ]
+
+    assert.isFalse(
+      validateBookingIntervalsHours(
         invalidBookingIntervals,
         bookings,
         exampleResources
