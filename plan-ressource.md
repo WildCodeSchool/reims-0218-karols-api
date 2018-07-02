@@ -3,22 +3,25 @@
 ## Resource collection
 
 ### Resources represents:
-* many prestation identified by a specific identifying string type (ex: MAQ_ULT for maquillage ultime)
-* a table
+
+- many prestation identified by a specific identifying string type (ex: MAQ_ULT for maquillage ultime)
+- a table
 
 ### Each resources should be an object with following fields:
-* quantity
-* week avaibility to helps create timeslots
-* a shop affectation
-* unavailable dates
-* an on/off bool
-* a duration
-* prestations types
+
+- quantity
+- week avaibility to helps create timeslots
+- a shop affectation
+- unavailable dates
+- an on/off bool
+- a duration by preparation
+- prestations types
 
 ### How to compute timeslots
-* We receive following info :
-  * a date
-  * an array of prestation (or table)
+
+- We receive following info :
+  - a date
+  - an array of prestation (or table)
 
 ex:
 

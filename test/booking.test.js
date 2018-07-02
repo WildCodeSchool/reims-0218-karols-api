@@ -36,17 +36,9 @@ const exampleResources = [
   }
 ]
 
-const time = DateTime.fromObject({
-  year: 2018,
-  month: 7,
-  day: 10,
-  hour: 13,
-  minutes: 0
-})
+const createBookingDurations = (booking, resources) => null
 
-const createBookingIntervals = (time, booking, resources) => null
-
-describe("createBookingIntervals", () => {
+describe("createBookingDurations", () => {
   it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
       selectedPreparations: [
@@ -74,32 +66,25 @@ describe("createBookingIntervals", () => {
       ]
     }
 
-    const i1 = Interval.after(time, { minutes: 20 })
-    const i2 = Interval.after(i1.end, { minutes: 30 })
-    const i3 = Interval.after(i2.end, { minutes: 10 })
-
     const expected = [
       {
         name: "SALARIE-A",
         type: "MAQ_ULT",
-        interval: i1
+        duration: { minutes: 20 }
       },
       {
         name: "SALARIE-B",
         type: "COUPE-F",
-        interval: i2
+        duration: { minutes: 30 }
       },
       {
         name: "SALARIE-A",
         type: "VERNIS",
-        interval: i3
+        duration: { minutes: 10 }
       }
     ]
 
-    assert.equal(
-      createBookingIntervals(time, booking, exampleResources),
-      expected
-    )
+    assert.equal(createBookingDurations(booking, exampleResources), expected)
   })
 
   it("should return an array of intervals with name and type info for a table booking", () => {
@@ -115,13 +100,10 @@ describe("createBookingIntervals", () => {
       {
         name: "TABLES",
         type: "TABLE",
-        interval: Interval.after(time, { hours: 2 })
+        duration: { hours: 2 }
       }
     ]
 
-    assert.equal(
-      createBookingIntervals(time, booking, exampleResources),
-      expected
-    )
+    assert.equal(createBookingDurations(booking, exampleResources), expected)
   })
 })
