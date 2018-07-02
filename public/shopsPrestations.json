@@ -4,6 +4,7 @@
       "id": 1,
       "city": "Paris",
       "address": "75000",
+      "phone": "0123456789",
       "image":
         "https://images.unsplash.com/photo-1438955138287-0c090d2290d5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6df7d8e3bf9a1b0952511d2c99000c62&auto=format&fit=crop&w=634&q=80",
       "selected": false
@@ -12,6 +13,7 @@
       "id": 2,
       "city": "Lyon",
       "address": "69000",
+      "phone": "0223456789",
       "image":
         "http://www.renderstorm.fr/wp-content/uploads/Renderstorm-Perspectiviste-Perspective-Gare-Bagneux-Ligne-15.jpg",
       "selected": false
@@ -20,6 +22,7 @@
       "id": 3,
       "city": "Cannes",
       "address": "06150",
+      "phone": "0423456789",
       "image":
         "https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=406aca1462040924190328fcf1ea0373&auto=format&fit=crop&w=1611&q=80",
       "selected": false
