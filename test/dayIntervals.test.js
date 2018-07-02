@@ -7,7 +7,6 @@ const { DateTime, Interval } = require("luxon")
 // on suday it is closed (empty array)
 
 const exampleResource = {
-  quantity: 2,
   week: {
     1: [
       {
