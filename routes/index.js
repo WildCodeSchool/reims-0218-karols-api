@@ -80,11 +80,7 @@ router.post("/reservations", (req, res) => {
         service => `<li>${service.preparations[0].titlePreparation}</li>`
       )}
       </ul>
-      <p> Vous serez pris en charge le ${DateTime.fromISO(
-        req.body.selectedTimeSlot.time.s
-      )
-        .setLocale("fr")
-        .toFormat("cccc dd LLLL HH 'h' mm")} </p>
+      <p> Vous serez pris en charge le ${DateTime.fromISO(req.body.selectedTimeSlot.time.s).setLocale("fr").toFormat("cccc dd LLLL HH 'h' mm")} </p>
       
       <footer><img src="https://image.noelshack.com/fichiers/2018/25/5/1529659014-logoemail.png"/></footer>`
     },
