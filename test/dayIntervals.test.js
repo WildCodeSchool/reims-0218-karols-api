@@ -61,9 +61,9 @@ const exampleResource = {
   }
 }
 
-const createDayTimeSlots = (date, resource) => null
+const createDayIntervals = (date, resource) => null
 
-describe("createDayTimeSlots", () => {
+describe("createDayIntervals", () => {
   it("should return an array with all 15 mins intervals for a monday", () => {
     const aMonday = DateTime.fromObject({
       year: 2018,
@@ -85,7 +85,7 @@ describe("createDayTimeSlots", () => {
         hour: 18
       })
     ).splitBy({ minutes: 15 })
-    assert.equal(createDayTimeSlots(aMonday, exampleResource), expected)
+    assert.equal(createDayIntervals(aMonday, exampleResource), expected)
   })
   it("should return an array with all 15 mins intervals for a tuesday", () => {
     const aTuesday = DateTime.fromObject({
@@ -125,7 +125,7 @@ describe("createDayTimeSlots", () => {
         })
       ).splitBy({ minutes: 15 })
     ]
-    assert.equal(createDayTimeSlots(aTuesday, exampleResource), expected)
+    assert.equal(createDayIntervals(aTuesday, exampleResource), expected)
   })
   it("should return an empty array for a sunday", () => {
     const aSunday = DateTime.fromObject({
@@ -133,6 +133,6 @@ describe("createDayTimeSlots", () => {
       month: 7,
       day: 8
     })
-    assert.equal(createDayTimeSlots(aSunday, exampleResource), [])
+    assert.equal(createDayIntervals(aSunday, exampleResource), [])
   })
 })
