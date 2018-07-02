@@ -23,3 +23,9 @@ admin/pass
 ## Add migrations
 
 [doc](https://github.com/emirotin/mongodb-migrations#creating-migrations)
+
+## prestations instructions
+
+- add a migration file for prestations
+- define a prestation model
+- create a route prestations
