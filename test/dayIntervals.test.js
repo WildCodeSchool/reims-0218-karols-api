@@ -4,7 +4,7 @@ const { DateTime, Interval } = require("luxon")
 // week description: 1 monday to 7 sunday
 // on monday resource is available from 17 to 18
 // on tuesday, friday and saturday it is available from 13 to 15:30 and 17 to 18
-// on suday it is closed (empty array)
+// on sunday it is closed (empty array)
 
 const exampleResource = {
   week: {

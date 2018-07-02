@@ -1,5 +1,5 @@
 const { assert } = require("chai")
-const { DateTime, Interval } = require("luxon")
+const { Interval } = require("luxon")
 
 const exampleResources = [
   {
@@ -105,5 +105,65 @@ describe("createBookingDurations", () => {
     ]
 
     assert.equal(createBookingDurations(booking, exampleResources), expected)
+  })
+})
+
+const createBookingIntervalsFromDurations = (interval, bookingDurations) => null
+
+describe("createBookingIntervalsFromDurations", () => {
+  it("should return an array of intervals + type ans name booking info", () => {
+    const time = {
+      year: 2018,
+      month: 7,
+      day: 9,
+      hour: 17
+    }
+
+    const interval = Interval.after(time, { minutes: 15 })
+
+    const i1 = Interval.after(time, { minutes: 20 })
+    const i2 = Interval.after(i1.end, { minutes: 30 })
+    const i3 = Interval.after(i2.end, { minutes: 10 })
+
+    const bookingDurations = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT",
+        duration: { minutes: 20 }
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE-F",
+        duration: { minutes: 30 }
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        duration: { minutes: 10 }
+      }
+    ]
+
+    const expected = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT",
+        interval: i1
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE-F",
+        interval: i2
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        interval: i3
+      }
+    ]
+
+    assert.equal(
+      createBookingIntervalsFromDurations(interval, bookingDurations),
+      expected
+    )
   })
 })
