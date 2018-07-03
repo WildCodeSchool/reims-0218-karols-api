@@ -1,4 +1,5 @@
 const { assert } = require("chai")
+const findResourceByType = require("../timeslots/")
 
 const exampleResources = [
   {
@@ -36,11 +37,6 @@ const exampleResources = [
     ]
   }
 ]
-
-const findResourceByType = (type, resources) =>
-  resources.find(resource => {
-    return resource.resources.find(resource => resource.type === type)
-  })
 
 describe("findResourceByType", () => {
   it("should return resource with matching type COUPE_F", () => {
