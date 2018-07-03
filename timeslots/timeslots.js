@@ -37,7 +37,7 @@ const createWeekTimeSlots = date => {
   // determiner la date du jour 1
   const dayArray = [] // declarer un tableau vide days
   const today = DateTime.local().set({ hour: 0, minute: 00 })
-  const dateSelected = DateTime.fromISO(date)
+  const dateSelected = DateTime.fromISO(date).set({ hour: 0, minute: 00 })
 
   const day = Interval.fromDateTimes(today, dateSelected).length("days") > 1 ? date.minus({days: 2}): today
 
