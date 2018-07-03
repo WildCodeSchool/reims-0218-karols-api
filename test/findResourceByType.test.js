@@ -1,5 +1,5 @@
 const { assert } = require("chai")
-const findResourceByType = require("../timeslots/")
+const findResourceByType = require("../timeslots/findResourceByType")
 
 const exampleResources = [
   {

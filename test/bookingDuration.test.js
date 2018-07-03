@@ -84,7 +84,10 @@ describe("createBookingDurations", () => {
       }
     ]
 
-    assert.equal(createBookingDurations(booking, exampleResources), expected)
+    assert.deepEqual(
+      createBookingDurations(booking, exampleResources),
+      expected
+    )
   })
 
   it("should return an array of intervals with name and type info for a table booking", () => {
@@ -104,7 +107,10 @@ describe("createBookingDurations", () => {
       }
     ]
 
-    assert.equal(createBookingDurations(booking, exampleResources), expected)
+    assert.deepEqual(
+      createBookingDurations(booking, exampleResources),
+      expected
+    )
   })
 })
 
@@ -161,7 +167,7 @@ describe("createBookingIntervalsFromDurations", () => {
       }
     ]
 
-    assert.equal(
+    assert.deepEqual(
       createBookingIntervalsFromDurations(interval, bookingDurations),
       expected
     )
