@@ -18,4 +18,4 @@ const prestationSchema = mongoose.Schema({
   preparations: [PreparationSchema]
 })
 
-module.exports = mongoose.model("Prestation", prestationSchema)
+module.exports = mongoose.model("prestation", prestationSchema)

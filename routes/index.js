@@ -7,7 +7,7 @@ const shopsPrestations = require("../public/shopsPrestations.json")
 const createWeekTimeSlots = require("../timeslots/timeslots")
 
 const Shop = require("../models/shop")
-const Prestation = require("../models/Prestation")
+const Prestation = require("../models/prestation")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
