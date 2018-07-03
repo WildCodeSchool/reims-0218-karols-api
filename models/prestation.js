@@ -9,7 +9,7 @@ const PreparationSchema = mongoose.Schema({
   titlePreparation: String
 })
 
-const prestationSchema = mongoose.Schema({
+const PrestationSchema = mongoose.Schema({
   id: Number,
   name: String,
   image: String,
