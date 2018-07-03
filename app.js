@@ -8,6 +8,18 @@ const cors = require("cors")
 const indexRouter = require("./routes/index")
 const usersRouter = require("./routes/users")
 
+const mongoose = require("mongoose")
+const mongo_express = require("mongo-express/lib/middleware")
+const mongo_express_config = require("./mongo_express_config")
+
+const urlMongo = "mongodb://localhost:27017/karols"
+mongoose.connect(urlMongo)
+const db = mongoose.connection
+db.on("error", console.error.bind(console, "Erreur lors de la connexion"))
+db.once("open", () => {
+  console.log("Connexion à la base OK")
+})
+
 const app = express()
 
 // view engine setup
@@ -23,6 +35,8 @@ app.use(cors())
 
 app.use("/", indexRouter)
 app.use("/users", usersRouter)
+
+app.use("/mongo_express", mongo_express(mongo_express_config))
 
 app.all("/*", function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
