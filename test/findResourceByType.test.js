@@ -37,7 +37,10 @@ const exampleResources = [
   }
 ]
 
-const findResourceByType = (type, resources) => null
+const findResourceByType = (type, resources) =>
+  resources.find(resource => {
+    return resource.resources.find(resource => resource.type === type)
+  })
 
 describe("findResourceByType", () => {
   it("should return resource with matching type COUPE_F", () => {
@@ -52,7 +55,7 @@ describe("findResourceByType", () => {
       ]
     }
 
-    assert.equal(findResourceByType("COUPE_F", exampleResources), expected)
+    assert.deepEqual(findResourceByType("COUPE_F", exampleResources), expected)
   })
   it("should return resource with matching type TABLE", () => {
     const expected = {
