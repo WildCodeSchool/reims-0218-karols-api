@@ -7,7 +7,7 @@ const shopsPrestations = require("../public/shopsPrestations.json")
 const createWeekTimeSlots = require("../timeslots/timeslots")
 
 const Shop = require("../models/shop")
-const Prestations = require("../models/Prestations")
+const Prestation = require("../models/Prestation")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -31,7 +31,7 @@ router.get("/shops", (req, res) => {
 
 router.get("/prestations", (req, res) => {
   //get the prestations collection
-  Prestations.find((err, prestations) => {
+  Prestation.find((err, prestations) => {
     if (err) {
       res.send(err)
     }

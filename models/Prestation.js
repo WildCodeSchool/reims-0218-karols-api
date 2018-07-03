@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const PreparationsSchema = mongoose.Schema({
+const PreparationSchema = mongoose.Schema({
   id: Number,
   selected: Boolean,
   count: Number,
@@ -9,13 +9,13 @@ const PreparationsSchema = mongoose.Schema({
   titlePreparation: String
 })
 
-const prestationsSchema = mongoose.Schema({
+const prestationSchema = mongoose.Schema({
   id: Number,
   name: String,
   image: String,
   description: String,
   gender: String,
-  preparations: [PreparationsSchema]
+  preparations: [PreparationSchema]
 })
 
-module.exports = mongoose.model("Prestations", prestationsSchema)
+module.exports = mongoose.model("Prestation", prestationSchema)
