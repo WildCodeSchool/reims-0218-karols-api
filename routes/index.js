@@ -7,6 +7,7 @@ const shopsPrestations = require("../public/shopsPrestations.json")
 const createWeekTimeSlots = require("../timeslots/timeslots")
 
 const Shop = require("../models/shop")
+const Prestations = require("../models/Prestations")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -25,6 +26,16 @@ router.get("/shops", (req, res) => {
       res.send(err)
     }
     res.json(shops)
+  })
+})
+
+router.get("/prestations", (req, res) => {
+  //get the prestations collection
+  Prestations.find((err, prestations) => {
+    if (err) {
+      res.send(err)
+    }
+    res.json(prestations)
   })
 })
 
@@ -87,7 +98,11 @@ router.post("/reservations", (req, res) => {
         service => `<li>${service.preparations[0].titlePreparation}</li>`
       )}
       </ul>
-      <p> Vous serez pris en charge le ${DateTime.fromISO(req.body.selectedTimeSlot.time.s).setLocale("fr").toFormat("cccc dd LLLL HH 'h' mm")} </p>
+      <p> Vous serez pris en charge le ${DateTime.fromISO(
+        req.body.selectedTimeSlot.time.s
+      )
+        .setLocale("fr")
+        .toFormat("cccc dd LLLL HH 'h' mm")} </p>
       
       <footer><img src="https://image.noelshack.com/fichiers/2018/25/5/1529659014-logoemail.png"/></footer>`
     },
