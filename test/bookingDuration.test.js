@@ -36,10 +36,24 @@ const exampleResources = [
   }
 ]
 
-const createBookingDurations = (booking, resources) => null
+const createBookingDurations = (booking, resources) =>
+  booking.selectedPreparations.map(boook =>
+    boook.preparations.map(
+      preparation =>
+        preparation.type ===
+        resources.find(resource =>
+          resource.resources.filter(resource => resource.type)
+        )
+    )
+  )
+
+// =>
+// booking.selectedPreparations.map(boook =>
+//   boook.preparations.map(preparation => preparation.type)
+// )
 
 describe("createBookingDurations", () => {
-  it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
+  it.only("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
       selectedPreparations: [
         {
