@@ -69,7 +69,7 @@ describe("findResourceByType", () => {
       ]
     }
 
-    assert.equal(findResourceByType("TABLE", exampleResources), expected)
+    assert.deepEqual(findResourceByType("TABLE", exampleResources), expected)
   })
   it("should return resource with matching type VERNIS", () => {
     const expected = {
@@ -87,6 +87,6 @@ describe("findResourceByType", () => {
       ]
     }
 
-    assert.equal(findResourceByType("VERNIS", exampleResources), expected)
+    assert.deepEqual(findResourceByType("VERNIS", exampleResources), expected)
   })
 })
