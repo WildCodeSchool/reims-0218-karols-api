@@ -47,7 +47,17 @@ router.get("/prestations", (req, res) => {
 })
 
 router.get("/shops-prestations", (req, res) => {
-  res.json(shopsPrestations)
+  //res.json(shopsPrestations)
+  Shop.find().then(shops => {
+    Prestation.find()
+      .then(prestations =>
+        res.json({
+          shops,
+          prestations
+        })
+      )
+      .catch(err => res.send(err))
+  })
 })
 
 router.get("/timeslots", (req, res) => {
