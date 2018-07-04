@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const mongoose = require("mongoose")
 const { DateTime, Interval } = require("luxon")
 const nodemailer = require("nodemailer")
 
@@ -21,22 +22,28 @@ router.post("/", function(req, res) {
 
 router.get("/shops", (req, res) => {
   // get the shops collection
-  Shop.find((err, shops) => {
-    if (err) {
-      res.send(err)
-    }
-    res.json(shops)
-  })
+  // Shop.find((err, shops) => {
+  //   if (err) {
+  //     res.send(err)
+  //   }
+  //   res.json(shops)
+  // })
+  Shop.find()
+    .then(shops => res.json(shops))
+    .catch(err => res.send(err))
 })
 
 router.get("/prestations", (req, res) => {
   //get the prestations collection
-  Prestation.find((err, prestations) => {
-    if (err) {
-      res.send(err)
-    }
-    res.json(prestations)
-  })
+  // Prestation.find((err, prestations) => {
+  //   if (err) {
+  //     res.send(err)
+  //   }
+  //   res.json(prestations)
+  // })
+  Prestation.find()
+    .then(prestations => res.json(prestations))
+    .catch(err => res.send(err))
 })
 
 router.get("/shops-prestations", (req, res) => {
