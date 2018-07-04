@@ -1,10 +1,11 @@
 const { assert } = require("chai")
 const { Interval } = require("luxon")
+const findResourceByType = require("../timeslots/findResourceByType")
 
 const exampleResources = [
   {
     name: "SALARIE-A",
-    resources: [
+    prestaTypes: [
       {
         type: "MAQ_ULT",
         duration: { minutes: 20 }
@@ -17,7 +18,7 @@ const exampleResources = [
   },
   {
     name: "SALARIE-B",
-    resources: [
+    prestaTypes: [
       {
         type: "COUPE_F",
         duration: { minutes: 30 }
@@ -27,7 +28,7 @@ const exampleResources = [
   ,
   {
     name: "TABLES",
-    resources: [
+    prestaTypes: [
       {
         type: "TABLE",
         duration: { hours: 2 }
@@ -37,6 +38,20 @@ const exampleResources = [
 ]
 
 const createBookingDurations = (booking, resources) => null
+// booking.selectedPreparations.map(book =>
+//   book.preparations.map(
+//     preparation =>
+//       preparation.type ===
+//       resources.find(resource =>
+//         resource.prestaTypes.filter(prestaType => prestaType.type)
+//       )
+//   )
+// )
+
+// =>
+// booking.selectedPreparations.map(boook =>
+//   boook.preparations.map(preparation => preparation.type)
+// )
 
 describe("createBookingDurations", () => {
   it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {

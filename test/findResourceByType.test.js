@@ -5,7 +5,7 @@ const exampleResources = [
   {
     name: "SALARIE-A",
     quantity: 2,
-    resources: [
+    prestaTypes: [
       {
         type: "MAQ_ULT",
         duration: { minutes: 20 }
@@ -19,7 +19,7 @@ const exampleResources = [
   {
     name: "SALARIE-B",
     quantity: 2,
-    resources: [
+    prestaTypes: [
       {
         type: "COUPE_F",
         duration: { minutes: 30 }
@@ -29,7 +29,7 @@ const exampleResources = [
   {
     name: "TABLES",
     quantity: 2,
-    resources: [
+    prestaTypes: [
       {
         type: "TABLE",
         duration: { hours: 2 }
@@ -43,7 +43,7 @@ describe("findResourceByType", () => {
     const expected = {
       name: "SALARIE-B",
       quantity: 2,
-      resources: [
+      prestaTypes: [
         {
           type: "COUPE_F",
           duration: { minutes: 30 }
@@ -57,7 +57,7 @@ describe("findResourceByType", () => {
     const expected = {
       name: "TABLES",
       quantity: 2,
-      resources: [
+      prestaTypes: [
         {
           type: "TABLE",
           duration: { hours: 2 }
@@ -71,7 +71,7 @@ describe("findResourceByType", () => {
     const expected = {
       name: "SALARIE-A",
       quantity: 2,
-      resources: [
+      prestaTypes: [
         {
           type: "MAQ_ULT",
           duration: { minutes: 20 }
