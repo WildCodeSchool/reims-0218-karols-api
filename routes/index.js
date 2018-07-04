@@ -33,6 +33,13 @@ router.get("/prestations", (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.get("/preparations", (req, res) => {
+  //get the preparation collection
+  Preparation.find()
+    .then(preparations => res.json(preparations))
+    .catch(err => res.send(err))
+})
+
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
