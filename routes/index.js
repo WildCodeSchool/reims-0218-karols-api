@@ -20,12 +20,13 @@ router.post("/", function(req, res) {
 
 router.get("/shops", (req, res) => {
   // get the shops collection
-  Shop.find((err, shops) => {
-    if (err) {
-      res.send(err)
-    }
-    res.json(shops)
-  })
+  // Shop.find((err, shops) => {
+  //   if (err) {
+  //     res.send(err)
+  //   }
+  //   res.json(shops)
+  // })
+  Shop.find().then(shops => res.json(shops))
 })
 
 router.get("/shops-prestations", (req, res) => {
