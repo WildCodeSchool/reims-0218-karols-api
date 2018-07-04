@@ -8,4 +8,4 @@ const serviceSchema = mongoose.Schema({
   selected: Boolean
 })
 
-module.exports = mongoose.model("Service", ServiceSchema)
+module.exports = mongoose.model("Service", serviceSchema)
