@@ -1,5 +1,6 @@
 const { assert } = require("chai")
 const { Interval } = require("luxon")
+const findResourceByType = require("../timeslots/findResourceByType")
 
 const exampleResources = [
   {
