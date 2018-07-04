@@ -37,24 +37,26 @@ const exampleResources = [
   }
 ]
 
-const createBookingDurations = (booking, resources) => null
-// booking.selectedPreparations.map(book =>
-//   book.preparations.map(
-//     preparation =>
-//       preparation.type ===
-//       resources.find(resource =>
-//         resource.prestaTypes.filter(prestaType => prestaType.type)
-//       )
-//   )
-// )
-
-// =>
-// booking.selectedPreparations.map(boook =>
-//   boook.preparations.map(preparation => preparation.type)
-// )
+const createBookingDurations = (booking, resources) =>
+  booking.selectedPreparations
+    .map(selectedPreparation =>
+      selectedPreparation.preparations
+        .map(preparation => ({
+          ...findResourceByType(preparation.type, resources),
+          type: preparation.type
+        }))
+        .map(element => ({
+          name: element.name,
+          type: element.type,
+          duration: element.prestaTypes.find(
+            prestaType => prestaType.type === element.type
+          ).duration
+        }))
+    )
+    .reduce((acc, value) => acc.concat(value), [])
 
 describe("createBookingDurations", () => {
-  it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
+  it.only("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
       selectedPreparations: [
         {
@@ -89,7 +91,7 @@ describe("createBookingDurations", () => {
       },
       {
         name: "SALARIE-B",
-        type: "COUPE-F",
+        type: "COUPE_F",
         duration: { minutes: 30 }
       },
       {
