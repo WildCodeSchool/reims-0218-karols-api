@@ -4,7 +4,7 @@ const { Interval } = require("luxon")
 const exampleResources = [
   {
     name: "SALARIE-A",
-    resources: [
+    prestaTypes: [
       {
         type: "MAQ_ULT",
         duration: { minutes: 20 }
@@ -17,7 +17,7 @@ const exampleResources = [
   },
   {
     name: "SALARIE-B",
-    resources: [
+    prestaTypes: [
       {
         type: "COUPE_F",
         duration: { minutes: 30 }
@@ -27,7 +27,7 @@ const exampleResources = [
   ,
   {
     name: "TABLES",
-    resources: [
+    prestaTypes: [
       {
         type: "TABLE",
         duration: { hours: 2 }
@@ -36,16 +36,16 @@ const exampleResources = [
   }
 ]
 
-const createBookingDurations = (booking, resources) =>
-  booking.selectedPreparations.map(boook =>
-    boook.preparations.map(
-      preparation =>
-        preparation.type ===
-        resources.find(resource =>
-          resource.resources.filter(resource => resource.type)
-        )
-    )
-  )
+const createBookingDurations = (booking, resources) => null
+// booking.selectedPreparations.map(book =>
+//   book.preparations.map(
+//     preparation =>
+//       preparation.type ===
+//       resources.find(resource =>
+//         resource.prestaTypes.filter(prestaType => prestaType.type)
+//       )
+//   )
+// )
 
 // =>
 // booking.selectedPreparations.map(boook =>
@@ -53,7 +53,7 @@ const createBookingDurations = (booking, resources) =>
 // )
 
 describe("createBookingDurations", () => {
-  it.only("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
+  it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
       selectedPreparations: [
         {
