@@ -9,6 +9,7 @@ const createWeekTimeSlots = require("../timeslots/timeslots")
 const Shop = require("../models/shop")
 const Prestation = require("../models/prestation")
 const Service = require("../models/service")
+const Gender = require("../models/gender")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -41,15 +42,28 @@ router.get("/services", (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.get("/genders", (req, res) => {
+  //get the genders collection
+  Gender.find()
+    .then(genders => res.json(genders))
+    .catch(err => res.send(err))
+})
+
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
-      Prestation.find().then(prestations =>
-        res.json({
-          shops,
-          prestations
+      Prestation.find().then(prestations => {
+        Service.find().then(services => {
+          Gender.find().then(genders => {
+            res.json({
+              shops,
+              prestations,
+              services,
+              genders
+            })
+          })
         })
-      )
+      })
     })
     .catch(err => res.send(err))
 })
