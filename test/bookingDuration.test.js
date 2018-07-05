@@ -1,6 +1,6 @@
 const { assert } = require("chai")
 const { Interval } = require("luxon")
-const findResourceByType = require("../timeslots/findResourceByType")
+const createBookingDurations = require("../timeslots/createBookingDurations")
 
 const exampleResources = [
   {
@@ -37,27 +37,14 @@ const exampleResources = [
   }
 ]
 
-const createBookingDurations = (booking, resources) =>
-  booking.selectedPreparations
-    .map(selectedPreparation =>
-      selectedPreparation.preparations
-        .map(preparation => ({
-          ...findResourceByType(preparation.type, resources),
-          type: preparation.type
-        }))
-        .map(element => ({
-          name: element.name,
-          type: element.type,
-          duration: element.prestaTypes.find(
-            prestaType => prestaType.type === element.type
-          ).duration
-        }))
-    )
-    .reduce((acc, value) => acc.concat(value), [])
-
 describe("createBookingDurations", () => {
-  it.only("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
+  it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
+      selectedService: {
+        id: 1,
+        name: "Preparation",
+        selected: true
+      },
       selectedPreparations: [
         {
           preparations: [
