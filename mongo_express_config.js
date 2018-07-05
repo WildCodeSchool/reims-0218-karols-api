@@ -64,7 +64,7 @@ module.exports = {
        * Add as many databases as you want!
        */
       {
-        database: process.env.ME_CONFIG_MONGODB_AUTH_DATABASE || "karols",
+        database: process.env.ME_CONFIG_MONGODB_AUTH_DATABASE || mongo.db,
         username: process.env.ME_CONFIG_MONGODB_AUTH_USERNAME || mongo.username,
         password: process.env.ME_CONFIG_MONGODB_AUTH_PASSWORD || mongo.password
       }
