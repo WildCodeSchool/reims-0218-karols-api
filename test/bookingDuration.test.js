@@ -120,18 +120,12 @@ describe("createBookingDurations", () => {
 
 const createBookingIntervalsFromDurations = (interval, bookingDurations) => {
   let durationOfEach
-  const time = {
-    year: 2018,
-    month: 7,
-    day: 9,
-    hour: 17
-  }
   let counter = 1
   let arrayOfIntervals = []
 
   for (booking of bookingDurations) {
     if (counter <= 1) {
-      durationOfEach = Interval.after(time, {
+      durationOfEach = Interval.after(interval.start, {
         minutes: booking.duration.minutes
       })
       counter = counter + 1
