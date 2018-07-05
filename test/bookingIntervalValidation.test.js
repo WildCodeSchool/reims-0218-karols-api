@@ -207,7 +207,7 @@ const countOverlappingBooking = (bookingInterval, bookings, resources) =>
     .map(coucou => console.log(coucou.week))
 
 describe("countOverlappingBooking", () => {
-  it.only("should return 0 for a booking interval with no overlaps", () => {
+  it("should return 0 for a booking interval with no overlaps", () => {
     const time = {
       year: 2018,
       month: 7,
