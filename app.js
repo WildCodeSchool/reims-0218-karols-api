@@ -12,7 +12,7 @@ const mongoose = require("mongoose")
 const mongo_express = require("mongo-express/lib/middleware")
 const mongo_express_config = require("./mongo_express_config")
 
-const urlMongo = "mongodb://localhost:27017/karols"
+const urlMongo = "mongodb://karolsdb:e1b98a66f2e136fe78aea7e792ce9f91@dokku-mongo-karolsdb:27017/karolsdb"
 mongoose.connect(urlMongo)
 const db = mongoose.connection
 db.on("error", console.error.bind(console, "Erreur lors de la connexion"))
