@@ -1,6 +1,8 @@
 const { assert } = require("chai")
 const { Interval } = require("luxon")
 
+const countOverlappingBooking = require("../timeslots/countOverlappingBooking")
+
 const exampleResources = [
   {
     name: "SALARIE-A",
@@ -200,21 +202,6 @@ const bookings = [
     ]
   }
 ]
-
-const countOverlappingBooking = (bookingInterval, bookings) => {
-  const count = bookings.reduce((acc, booking) => {
-    return booking.prestations.reduce((acc, prestation) => {
-      return bookingInterval.name === prestation.name
-        ? bookingInterval.interval.overlaps(prestation.interval)
-          ? acc + 1
-          : acc
-        : acc
-    }, acc)
-  }, 0)
-  return count
-}
-
-//.reduce(overlaps => overlaps + 1))
 
 describe("countOverlappingBooking", () => {
   it("should return 0 for a booking interval with no overlaps", () => {
