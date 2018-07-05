@@ -10,6 +10,7 @@ const Shop = require("../models/shop")
 const Prestation = require("../models/prestation")
 const Service = require("../models/service")
 const Gender = require("../models/gender")
+const Table = require("../models/table")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -49,17 +50,27 @@ router.get("/genders", (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.get("/tables", (req, res) => {
+  //get the tables collection
+  Table.findOne()
+    .then(tables => res.json(tables))
+    .catch(err => res.send(err))
+})
+
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
       Prestation.find().then(prestations => {
         Service.find().then(services => {
           Gender.find().then(genders => {
-            res.json({
-              shops,
-              prestations,
-              services,
-              genders
+            Table.findOne().then(tables => {
+              res.json({
+                shops,
+                prestations,
+                services,
+                genders,
+                tables
+              })
             })
           })
         })
