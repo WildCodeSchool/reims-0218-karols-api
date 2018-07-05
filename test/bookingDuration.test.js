@@ -119,16 +119,45 @@ describe("createBookingDurations", () => {
 })
 
 const createBookingIntervalsFromDurations = (interval, bookingDurations) => {
-  let intervalsCount = 0
+  let durationOfEach
+  const time = {
+    year: 2018,
+    month: 7,
+    day: 9,
+    hour: 17
+  }
+  let counter = 1
+  let arrayOfIntervals = []
+
   for (booking of bookingDurations) {
-    durationOfEach = booking.duration.minutes
-    return {
-      name: booking.name,
-      type: booking.type,
-      interval: Interval.after(durationOfEach, { minutes: 20 }),
-      duration: booking.duration
+    if (counter <= 1) {
+      durationOfEach = Interval.after(time, {
+        minutes: booking.duration.minutes
+      })
+      counter = counter + 1
+      const objectOfIntervals = {
+        name: booking.name,
+        type: booking.type,
+        interval: durationOfEach,
+        duration: booking.duration
+      }
+      arrayOfIntervals.push(objectOfIntervals)
+    } else {
+      const objectOfIntervals = {
+        name: booking.name,
+        type: booking.type,
+        interval: Interval.after(durationOfEach.end, {
+          minutes: booking.duration.minutes
+        }),
+        duration: booking.duration
+      }
+      durationOfEach = Interval.after(durationOfEach.end, {
+        minutes: booking.duration.minutes
+      })
+      arrayOfIntervals.push(objectOfIntervals)
     }
   }
+  return arrayOfIntervals
 }
 
 describe("createBookingIntervalsFromDurations", () => {
