@@ -69,7 +69,7 @@ router.get("/shops-prestations", (req, res) => {
                 prestations,
                 services,
                 genders,
-                tables
+                table
               })
             })
           })
