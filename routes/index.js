@@ -12,6 +12,7 @@ const Service = require("../models/service")
 const Gender = require("../models/gender")
 const Table = require("../models/table")
 const Logo = require("../models/logo")
+const Resource = require("../models/resource")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -163,9 +164,18 @@ router.post("/reservations", (req, res) => {
   )
 })
 
-router.get("/date-selected/:date", (req, res) => {
-  console.log("date : ", req.params.date)
-  res.send(createWeekTimeSlots(DateTime.fromISO(req.params.date)))
+router.post("/date-selected/:date", (req, res) => {
+  if (req.body.shop) {
+    Resource.find({ city: req.body.shop.city }).then(resources => {
+      res.send(
+        createWeekTimeSlots(
+          DateTime.fromISO(req.params.date),
+          req.body,
+          resources
+        )
+      )
+    })
+  }
 })
 
 module.exports = router
