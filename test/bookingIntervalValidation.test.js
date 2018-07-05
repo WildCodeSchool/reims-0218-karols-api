@@ -201,7 +201,7 @@ const bookings = [
   }
 ]
 
-const countOverlappingBooking = (bookingInterval, bookings, resources) => {
+const countOverlappingBooking = (bookingInterval, bookings) => {
   const count = bookings.reduce((acc, booking) => {
     return booking.prestations.reduce((acc, prestation) => {
       return bookingInterval.name === prestation.name
