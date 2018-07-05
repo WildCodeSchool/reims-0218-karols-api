@@ -155,7 +155,7 @@ const createBookingIntervalsFromDurations = (interval, bookingDurations) => {
 }
 
 describe("createBookingIntervalsFromDurations", () => {
-  it.only("should return an array of intervals + type ans name booking info", () => {
+  it("should return an array of intervals + type ans name booking info", () => {
     const time = {
       year: 2018,
       month: 7,
