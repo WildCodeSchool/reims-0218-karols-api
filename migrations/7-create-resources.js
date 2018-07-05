@@ -2,7 +2,7 @@
 
 module.exports.id = "CREATE-RESOURCES"
 
-const resources = [
+const allResources = [
   {
     city: "Paris",
     name: "SALARIE-A",
@@ -24,7 +24,45 @@ const resources = [
         type: "VERNIS",
         duration: { minutes: 10 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 9 },
+          end: { hours: 12 }
+        },
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Paris",
@@ -47,7 +85,45 @@ const resources = [
         type: "COIF_STYL_3",
         duration: { minutes: 10 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 9 },
+          end: { hours: 12 }
+        },
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Paris",
@@ -58,7 +134,41 @@ const resources = [
         type: "TABLE",
         duration: { hours: 2 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Lyon",
@@ -81,7 +191,45 @@ const resources = [
         type: "VERNIS",
         duration: { minutes: 10 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 9 },
+          end: { hours: 12 }
+        },
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Lyon",
@@ -104,7 +252,45 @@ const resources = [
         type: "COIF_STYL_3",
         duration: { minutes: 10 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 9 },
+          end: { hours: 12 }
+        },
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Lyon",
@@ -115,7 +301,41 @@ const resources = [
         type: "TABLE",
         duration: { hours: 2 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Cannes",
@@ -138,7 +358,45 @@ const resources = [
         type: "VERNIS",
         duration: { minutes: 10 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 9 },
+          end: { hours: 12 }
+        },
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Cannes",
@@ -161,7 +419,45 @@ const resources = [
         type: "COIF_STYL_3",
         duration: { minutes: 10 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 9 },
+          end: { hours: 12 }
+        },
+        {
+          start: { hours: 14 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   },
   {
     city: "Cannes",
@@ -172,7 +468,41 @@ const resources = [
         type: "TABLE",
         duration: { hours: 2 }
       }
-    ]
+    ],
+    week: {
+      1: [],
+      2: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      3: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      4: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      5: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      6: [
+        {
+          start: { hours: 18 },
+          end: { hours: 22 }
+        }
+      ],
+      7: []
+    }
   }
 ]
 
@@ -180,7 +510,7 @@ module.exports.up = function(done) {
   // use this.db for MongoDB communication, and this.log() for logging
   const resources = this.db.collection("resources")
 
-  resources.forEach(resource => {
+  allResources.forEach(resource => {
     resources.insert(resource, done)
   })
 }
