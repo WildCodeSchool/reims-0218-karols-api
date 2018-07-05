@@ -56,7 +56,7 @@ const createBookingDurations = (booking, resources) =>
     .reduce((acc, value) => acc.concat(value), [])
 
 describe("createBookingDurations", () => {
-  it.only("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
+  it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
       selectedPreparations: [
         {
