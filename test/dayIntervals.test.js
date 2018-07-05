@@ -1,6 +1,8 @@
 const { assert } = require("chai")
 const { DateTime, Interval } = require("luxon")
 
+const createDayIntervals = require("../timeslots/createDayIntervals")
+
 // week description: 1 monday to 7 sunday
 // on monday resource is available from 17 to 18
 // on tuesday, friday and saturday it is available from 13 to 15:30 and 17 to 18
@@ -60,8 +62,6 @@ const exampleResource = {
   }
 }
 
-const createDayIntervals = (date, resource) => null
-
 describe("createDayIntervals", () => {
   it("should return an array with all 15 mins intervals for a monday", () => {
     const aMonday = DateTime.fromObject({
@@ -84,7 +84,7 @@ describe("createDayIntervals", () => {
         hour: 18
       })
     ).splitBy({ minutes: 15 })
-    assert.equal(createDayIntervals(aMonday, exampleResource), expected)
+    assert.deepEqual(createDayIntervals(aMonday, exampleResource), expected)
   })
   it("should return an array with all 15 mins intervals for a tuesday", () => {
     const aTuesday = DateTime.fromObject({
@@ -124,7 +124,7 @@ describe("createDayIntervals", () => {
         })
       ).splitBy({ minutes: 15 })
     ]
-    assert.equal(createDayIntervals(aTuesday, exampleResource), expected)
+    assert.deepEqual(createDayIntervals(aTuesday, exampleResource), expected)
   })
   it("should return an empty array for a sunday", () => {
     const aSunday = DateTime.fromObject({
@@ -132,6 +132,6 @@ describe("createDayIntervals", () => {
       month: 7,
       day: 8
     })
-    assert.equal(createDayIntervals(aSunday, exampleResource), [])
+    assert.deepEqual(createDayIntervals(aSunday, exampleResource), [])
   })
 })

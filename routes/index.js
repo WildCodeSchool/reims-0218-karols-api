@@ -1,13 +1,16 @@
 const express = require("express")
 const router = express.Router()
+const mongoose = require("mongoose")
 const { DateTime, Interval } = require("luxon")
 const nodemailer = require("nodemailer")
 
-const shopsPrestations = require("../public/shopsPrestations.json")
 const createWeekTimeSlots = require("../timeslots/timeslots")
 
 const Shop = require("../models/shop")
 const Prestation = require("../models/prestation")
+const Service = require("../models/service")
+const Gender = require("../models/gender")
+const Table = require("../models/table")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -21,6 +24,7 @@ router.post("/", function(req, res) {
 
 router.get("/shops", (req, res) => {
   // get the shops collection
+<<<<<<< HEAD
   // Shop.find((err, shops) => {
   //   if (err) {
   //     res.send(err)
@@ -28,20 +32,61 @@ router.get("/shops", (req, res) => {
   //   res.json(shops)
   // })
   Shop.find().then(shops => res.json(shops))
+=======
+  Shop.find()
+    .then(shops => res.json(shops))
+    .catch(err => res.send(err))
+>>>>>>> 3bd93e2980e8f59701421e8f27be37a8798b70aa
 })
 
 router.get("/prestations", (req, res) => {
   //get the prestations collection
-  Prestation.find((err, prestations) => {
-    if (err) {
-      res.send(err)
-    }
-    res.json(prestations)
-  })
+  Prestation.find()
+    .then(prestations => res.json(prestations))
+    .catch(err => res.send(err))
+})
+
+router.get("/services", (req, res) => {
+  //get the services collection
+  Service.find()
+    .then(services => res.json(services))
+    .catch(err => res.send(err))
+})
+
+router.get("/genders", (req, res) => {
+  //get the genders collection
+  Gender.find()
+    .then(genders => res.json(genders))
+    .catch(err => res.send(err))
+})
+
+router.get("/table", (req, res) => {
+  //get the tables collection
+  Table.findOne()
+    .then(tables => res.json(tables))
+    .catch(err => res.send(err))
 })
 
 router.get("/shops-prestations", (req, res) => {
-  res.json(shopsPrestations)
+  Shop.find()
+    .then(shops => {
+      Prestation.find().then(prestations => {
+        Service.find().then(services => {
+          Gender.find().then(genders => {
+            Table.findOne().then(table => {
+              res.json({
+                shops,
+                prestations,
+                services,
+                genders,
+                tables
+              })
+            })
+          })
+        })
+      })
+    })
+    .catch(err => res.send(err))
 })
 
 router.get("/timeslots", (req, res) => {
