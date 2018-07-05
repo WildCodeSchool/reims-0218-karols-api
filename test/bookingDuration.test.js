@@ -118,10 +118,21 @@ describe("createBookingDurations", () => {
   })
 })
 
-const createBookingIntervalsFromDurations = (interval, bookingDurations) => null
+const createBookingIntervalsFromDurations = (interval, bookingDurations) => {
+  let intervalsCount = 0
+  for (booking of bookingDurations) {
+    durationOfEach = booking.duration.minutes
+    return {
+      name: booking.name,
+      type: booking.type,
+      interval: Interval.after(durationOfEach, { minutes: 20 }),
+      duration: booking.duration
+    }
+  }
+}
 
 describe("createBookingIntervalsFromDurations", () => {
-  it("should return an array of intervals + type ans name booking info", () => {
+  it.only("should return an array of intervals + type ans name booking info", () => {
     const time = {
       year: 2018,
       month: 7,
@@ -157,17 +168,20 @@ describe("createBookingIntervalsFromDurations", () => {
       {
         name: "SALARIE-A",
         type: "MAQ_ULT",
-        interval: i1
+        interval: i1,
+        duration: { minutes: 20 }
       },
       {
         name: "SALARIE-B",
         type: "COUPE-F",
-        interval: i2
+        interval: i2,
+        duration: { minutes: 30 }
       },
       {
         name: "SALARIE-A",
         type: "VERNIS",
-        interval: i3
+        interval: i3,
+        duration: { minutes: 10 }
       }
     ]
 
