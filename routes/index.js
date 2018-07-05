@@ -50,7 +50,7 @@ router.get("/genders", (req, res) => {
     .catch(err => res.send(err))
 })
 
-router.get("/tables", (req, res) => {
+router.get("/table", (req, res) => {
   //get the tables collection
   Table.findOne()
     .then(tables => res.json(tables))
@@ -63,7 +63,7 @@ router.get("/shops-prestations", (req, res) => {
       Prestation.find().then(prestations => {
         Service.find().then(services => {
           Gender.find().then(genders => {
-            Table.findOne().then(tables => {
+            Table.findOne().then(table => {
               res.json({
                 shops,
                 prestations,
