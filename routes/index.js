@@ -11,6 +11,7 @@ const Prestation = require("../models/prestation")
 const Service = require("../models/service")
 const Gender = require("../models/gender")
 const Table = require("../models/table")
+const Logo = require("../models/logo")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -57,6 +58,13 @@ router.get("/table", (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.get("/logo", (req, res) => {
+  //get the logos collection
+  Logo.findOne()
+    .then(logos => res.json(logos))
+    .catch(err => res.send(err))
+})
+
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
@@ -64,12 +72,15 @@ router.get("/shops-prestations", (req, res) => {
         Service.find().then(services => {
           Gender.find().then(genders => {
             Table.findOne().then(table => {
-              res.json({
-                shops,
-                prestations,
-                services,
-                genders,
-                table
+              Logo.findOne().then(logo => {
+                res.json({
+                  shops,
+                  prestations,
+                  services,
+                  genders,
+                  table,
+                  logo
+                })
               })
             })
           })
