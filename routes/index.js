@@ -5,12 +5,16 @@ const { DateTime, Interval } = require("luxon")
 const nodemailer = require("nodemailer")
 
 const createWeekTimeSlots = require("../timeslots/timeslots")
+const createBookingDurations = require("../timeslots/createBookingDurations")
 
 const Shop = require("../models/shop")
 const Prestation = require("../models/prestation")
 const Service = require("../models/service")
 const Gender = require("../models/gender")
 const Table = require("../models/table")
+const Logo = require("../models/logo")
+const Resource = require("../models/resource")
+const Booking = require("../models/booking")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -57,6 +61,13 @@ router.get("/table", (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.get("/logo", (req, res) => {
+  //get the logos collection
+  Logo.findOne()
+    .then(logos => res.json(logos))
+    .catch(err => res.send(err))
+})
+
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
@@ -64,12 +75,15 @@ router.get("/shops-prestations", (req, res) => {
         Service.find().then(services => {
           Gender.find().then(genders => {
             Table.findOne().then(table => {
-              res.json({
-                shops,
-                prestations,
-                services,
-                genders,
-                table
+              Logo.findOne().then(logo => {
+                res.json({
+                  shops,
+                  prestations,
+                  services,
+                  genders,
+                  table,
+                  logo
+                })
               })
             })
           })
@@ -92,19 +106,24 @@ router.get("/timeslots", (req, res) => {
 })
 
 router.post("/reservations", (req, res) => {
-  console.log("body de Tanguy", req.body.selectedTimeSlot.time.s)
-  res.json({
-    name: "Reservation",
-    success: true
-  })
+  if (req.body.shop) {
+    Resource.find({ city: req.body.shop.city }).then(resources => {
+      //console.log("resources: ", resources)
+      const booking = new Booking({
+        city: req.body.shop.city,
+        contact: req.body.contact,
+        data: req.body,
+        prestations: createBookingDurations(req.body, resources)
+      })
+      booking.save(err => console.log(err))
+      res.json({
+        name: "Reservation",
+        success: true
+      })
+    })
+  }
 
-  const transformTimeSlot = timeSlot =>
-    DateTime.fromISO(req.body.selectedTimeSlot.time.s)
-      .setLocale("fr")
-      .toFormat("cccc dd LLLL HH 'h' mm")
-
-  console.log(transformTimeSlot("2018-06-29T09:15:00.000+02:00"))
-
+  /* 
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -149,12 +168,21 @@ router.post("/reservations", (req, res) => {
         console.log("Message sent: Confirmation de mail envoyée ")
       }
     }
-  )
+  )*/
 })
 
-router.get("/date-selected/:date", (req, res) => {
-  console.log("date : ", req.params.date)
-  res.send(createWeekTimeSlots(DateTime.fromISO(req.params.date)))
+router.post("/date-selected/:date", (req, res) => {
+  if (req.body.shop) {
+    Resource.find({ city: req.body.shop.city }).then(resources => {
+      res.send(
+        createWeekTimeSlots(
+          DateTime.fromISO(req.params.date),
+          req.body,
+          resources
+        )
+      )
+    })
+  }
 })
 
 module.exports = router

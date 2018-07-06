@@ -40,12 +40,12 @@ const exampleResources = [
 describe("createBookingDurations", () => {
   it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
-      selectedService: {
+      service: {
         id: 1,
         name: "Preparation",
         selected: true
       },
-      selectedPreparations: [
+      preparations: [
         {
           preparations: [
             {
@@ -96,7 +96,7 @@ describe("createBookingDurations", () => {
 
   it("should return an array of intervals with name and type info for a table booking", () => {
     const booking = {
-      selectedService: {
+      service: {
         id: 2,
         name: "Table",
         selected: true
@@ -120,18 +120,12 @@ describe("createBookingDurations", () => {
 
 const createBookingIntervalsFromDurations = (interval, bookingDurations) => {
   let durationOfEach
-  const time = {
-    year: 2018,
-    month: 7,
-    day: 9,
-    hour: 17
-  }
   let counter = 1
   let arrayOfIntervals = []
 
   for (booking of bookingDurations) {
     if (counter <= 1) {
-      durationOfEach = Interval.after(time, {
+      durationOfEach = Interval.after(interval.start, {
         minutes: booking.duration.minutes
       })
       counter = counter + 1
@@ -161,7 +155,7 @@ const createBookingIntervalsFromDurations = (interval, bookingDurations) => {
 }
 
 describe("createBookingIntervalsFromDurations", () => {
-  it.only("should return an array of intervals + type ans name booking info", () => {
+  it("should return an array of intervals + type ans name booking info", () => {
     const time = {
       year: 2018,
       month: 7,
