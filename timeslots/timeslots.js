@@ -22,17 +22,23 @@ const createWeekTimeSlots = (date, reservationData, resources) => {
       : today
 
   for (let i = 0; i < 5; i++) {
+    let resource
+    if (reservationData.service.id === 1) {
+      resource = findResourceByType(
+        reservationData.preparations[0].preparations[0].type,
+        resources
+      )
+    }
+    if (reservationData.service.id === 2) {
+      resource = findResourceByType("TABLE", resources)
+    }
     //  -> boucle qui passe 5 fois
     dayArray.push({
       // On pousse dans le tableau vide les timeSlots crées pour chaque jour
       date: day.plus({ days: i }),
-      timeSlots: createDayIntervals(
-        day.plus({ days: i }),
-        findResourceByType(
-          reservationData.preparations[0].preparations[0].type,
-          resources
-        )
-      ).map(interval => createTimeSlot(interval))
+      timeSlots: createDayIntervals(day.plus({ days: i }), resource).map(
+        interval => createTimeSlot(interval)
+      )
     })
   }
   return dayArray
