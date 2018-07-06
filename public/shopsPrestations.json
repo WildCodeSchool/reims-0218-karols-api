@@ -42,8 +42,7 @@
           "count": 0,
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530864856-preparation1-1.png",
-          "info":
-            "https://www.mille-et-une-bieres.fr/les-boutiques/boutique-de-reims/",
+          "info": "https://fr.wikipedia.org/wiki/Maquillage",
           "titlePreparation":
             "Maquillage' focus sur un élément' ou 'effet bonne mine' (au choix)",
           "type": "MAQ_FOCUS"
@@ -54,8 +53,7 @@
           "count": 0,
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530865173-preparation1-2.png",
-          "info":
-            "https://www.1jour1vin.com/fr/vin-champagne?s=GOOGLE-RWD&o=295&p=2&v=wmPr87&gclid=CjwKCAjw68zZBRAnEiwACw0eYRL1riv_mm8L8uRt-zi9RK1rolzk73MRDXJo2mfMnEFP2taCbpUTQRoCMAEQAvD_BwE",
+          "info": "https://fr.wikipedia.org/wiki/Maquillage",
           "titlePreparation": "Maquillage KAROLS",
           "type": "MAQ_KAROLS"
         },
@@ -66,7 +64,7 @@
           "image":
             "https://images.unsplash.com/photo-1495638671147-2cb03fe8e33e?ixlib=rb-0.3.5&s=949cb3800f55dd074ff07da771968e91&auto=format&fit=crop&w=1350&q=80",
           "titlePreparation": "Maquillage ultime",
-          "info": "https://your-cbd-store.jimdofree.com/",
+          "info": "https://fr.wikipedia.org/wiki/Maquillage",
           "type": "MAQ_ULTIME"
         }
       ]
@@ -84,8 +82,7 @@
           "count": 0,
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530865220-preparation2-1.png",
-          "info":
-            "https://www.vinatis.com/spiritueux-vodka#p1&n15&t7&f[]73[]190577:f[]27[]11427[]s",
+          "info": "https://fr.wikipedia.org/wiki/Coiffure",
           "titlePreparation": "Coiffure stylisée",
           "type": "COIF_STYL"
         },
@@ -95,8 +92,7 @@
           "count": 0,
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530865251-preparation2-2.jpg",
-          "info":
-            "https://www.wildness.fr/lancer-de-haches/?gclid=CjwKCAjw68zZBRAnEiwACw0eYajjlmS25u_as-TS4g-mMReBSk90FEYk2CVuzZpN3DtwNGx0Yy3RbhoCZ8sQAvD_BwE",
+          "info": "https://fr.wikipedia.org/wiki/Coiffure",
           "titlePreparation": "Coiffure stylisée élaborée",
           "type": "COIF_STYL_2"
         },
@@ -106,6 +102,7 @@
           "count": 0,
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530865277-preparation2-3.png",
+          "info": "https://fr.wikipedia.org/wiki/Coiffure",
           "titlePreparation": "Coiffure stylisée très élaborée",
           "type": "COIF_STYL_3"
         }
@@ -203,7 +200,7 @@
           "count": 0,
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530865521-preparation11.png",
-          "info": "http://palf.free.fr/portrait/vocabulaire.htm",
+          "info": "https://fr.wikipedia.org/wiki/Barbe",
           "titlePreparation": "Barbe 1",
           "duration": {
             "minutes": 20
