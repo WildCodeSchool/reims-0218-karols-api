@@ -40,12 +40,12 @@ const exampleResources = [
 describe("createBookingDurations", () => {
   it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
-      selectedService: {
+      service: {
         id: 1,
         name: "Preparation",
         selected: true
       },
-      selectedPreparations: [
+      preparations: [
         {
           preparations: [
             {
@@ -96,7 +96,7 @@ describe("createBookingDurations", () => {
 
   it("should return an array of intervals with name and type info for a table booking", () => {
     const booking = {
-      selectedService: {
+      service: {
         id: 2,
         name: "Table",
         selected: true
