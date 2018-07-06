@@ -29,27 +29,31 @@ router.post("/", function(req, res) {
 router.get("/shops", (req, res) => {
   // get the shops collection
   Shop.find()
+    .sort({ id: 1 })
     .then(shops => res.json(shops))
     .catch(err => res.send(err))
 })
 
 router.get("/prestations", (req, res) => {
   //get the prestations collection
-  Prestation.find()
+  Prestation.find({})
+    .sort({ id: 1 })
     .then(prestations => res.json(prestations))
     .catch(err => res.send(err))
 })
 
 router.get("/services", (req, res) => {
   //get the services collection
-  Service.find()
+  Service.find({})
+    .sort({ id: 1 })
     .then(services => res.json(services))
     .catch(err => res.send(err))
 })
 
 router.get("/genders", (req, res) => {
   //get the genders collection
-  Gender.find()
+  Gender.find({})
+    .sort({ gender: -1 })
     .then(genders => res.json(genders))
     .catch(err => res.send(err))
 })
@@ -71,24 +75,30 @@ router.get("/logo", (req, res) => {
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
-      Prestation.find().then(prestations => {
-        Service.find().then(services => {
-          Gender.find().then(genders => {
-            Table.findOne().then(table => {
-              Logo.findOne().then(logo => {
-                res.json({
-                  shops,
-                  prestations,
-                  services,
-                  genders,
-                  table,
-                  logo
+      Prestation.find({})
+        .sort({ id: 1 })
+        .then(prestations => {
+          Service.find({})
+            .sort({ id: 1 })
+            .then(services => {
+              Gender.find()
+                .sort({ gender: -1 })
+                .then(genders => {
+                  Table.findOne().then(table => {
+                    Logo.findOne().then(logo => {
+                      res.json({
+                        shops,
+                        prestations,
+                        services,
+                        genders,
+                        table,
+                        logo
+                      })
+                    })
+                  })
                 })
-              })
             })
-          })
         })
-      })
     })
     .catch(err => res.send(err))
 })
