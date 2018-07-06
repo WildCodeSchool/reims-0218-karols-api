@@ -75,24 +75,30 @@ router.get("/logo", (req, res) => {
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
-      Prestation.find().then(prestations => {
-        Service.find().then(services => {
-          Gender.find().then(genders => {
-            Table.findOne().then(table => {
-              Logo.findOne().then(logo => {
-                res.json({
-                  shops,
-                  prestations,
-                  services,
-                  genders,
-                  table,
-                  logo
+      Prestation.find({})
+        .sort({ id: 1 })
+        .then(prestations => {
+          Service.find({})
+            .sort({ id: 1 })
+            .then(services => {
+              Gender.find()
+                .sort({ gender: -1 })
+                .then(genders => {
+                  Table.findOne().then(table => {
+                    Logo.findOne().then(logo => {
+                      res.json({
+                        shops,
+                        prestations,
+                        services,
+                        genders,
+                        table,
+                        logo
+                      })
+                    })
+                  })
                 })
-              })
             })
-          })
         })
-      })
     })
     .catch(err => res.send(err))
 })
