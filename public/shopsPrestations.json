@@ -40,11 +40,12 @@
           "id": 1,
           "selected": false,
           "count": 0,
+
+          "titlePreparation": "Maquillage focus",
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530864856-preparation1-1.png",
           "info": "https://fr.wikipedia.org/wiki/Maquillage",
-          "titlePreparation":
-            "Maquillage' focus sur un élément' ou 'effet bonne mine' (au choix)",
+
           "type": "MAQ_FOCUS"
         },
         {
@@ -90,20 +91,22 @@
           "id": 2,
           "selected": false,
           "count": 0,
+
+          "titlePreparation": "Coiffure élaborée",
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530865251-preparation2-2.jpg",
           "info": "https://fr.wikipedia.org/wiki/Coiffure",
-          "titlePreparation": "Coiffure stylisée élaborée",
           "type": "COIF_STYL_2"
         },
         {
           "id": 3,
           "selected": false,
           "count": 0,
+
+          "titlePreparation": "Coiffure très élaborée",
           "image":
             "https://image.noelshack.com/fichiers/2018/27/5/1530865277-preparation2-3.png",
           "info": "https://fr.wikipedia.org/wiki/Coiffure",
-          "titlePreparation": "Coiffure stylisée très élaborée",
           "type": "COIF_STYL_3"
         }
       ]
