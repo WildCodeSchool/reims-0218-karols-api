@@ -10,7 +10,7 @@ const allResources = [
     prestaTypes: [
       {
         type: "MAQ_ULTIME",
-        duration: { minutes: 20 }
+        duration: { minutes: 45 }
       },
       {
         type: "MAQ_FOCUS",
@@ -18,11 +18,19 @@ const allResources = [
       },
       {
         type: "MAQ_KAROLS",
+        duration: { minutes: 30 }
+      },
+      {
+        type: "COIF_STYL",
         duration: { minutes: 20 }
       },
       {
-        type: "VERNIS",
-        duration: { minutes: 10 }
+        type: "COIF_STYL_2",
+        duration: { minutes: 30 }
+      },
+      {
+        type: "COIF_STYL_3",
+        duration: { minutes: 45 }
       }
     ],
     week: {
@@ -70,19 +78,23 @@ const allResources = [
     quantity: 2,
     prestaTypes: [
       {
-        type: "COIF_STYL",
+        type: "COUPE_CLASS",
         duration: { minutes: 20 }
       },
       {
-        type: "COIF_STYL_2",
+        type: "COUPE_STYL",
         duration: { minutes: 20 }
       },
       {
-        type: "MAQ_KAROLS",
+        type: "VERNIS",
+        duration: { minutes: 10 }
+      },
+      {
+        type: "COUPE_HOMME",
         duration: { minutes: 20 }
       },
       {
-        type: "COIF_STYL_3",
+        type: "BARBE",
         duration: { minutes: 10 }
       }
     ],
@@ -177,7 +189,7 @@ const allResources = [
     prestaTypes: [
       {
         type: "MAQ_ULTIME",
-        duration: { minutes: 20 }
+        duration: { minutes: 45 }
       },
       {
         type: "MAQ_FOCUS",
@@ -185,11 +197,19 @@ const allResources = [
       },
       {
         type: "MAQ_KAROLS",
+        duration: { minutes: 30 }
+      },
+      {
+        type: "COIF_STYL",
         duration: { minutes: 20 }
       },
       {
-        type: "VERNIS",
-        duration: { minutes: 10 }
+        type: "COIF_STYL_2",
+        duration: { minutes: 30 }
+      },
+      {
+        type: "COIF_STYL_3",
+        duration: { minutes: 45 }
       }
     ],
     week: {
@@ -237,19 +257,23 @@ const allResources = [
     quantity: 2,
     prestaTypes: [
       {
-        type: "COIF_STYL",
+        type: "COUPE_CLASS",
         duration: { minutes: 20 }
       },
       {
-        type: "COIF_STYL_2",
+        type: "COUPE_STYL",
         duration: { minutes: 20 }
       },
       {
-        type: "MAQ_KAROLS",
+        type: "VERNIS",
+        duration: { minutes: 10 }
+      },
+      {
+        type: "COUPE_HOMME",
         duration: { minutes: 20 }
       },
       {
-        type: "COIF_STYL_3",
+        type: "BARBE",
         duration: { minutes: 10 }
       }
     ],
@@ -344,7 +368,7 @@ const allResources = [
     prestaTypes: [
       {
         type: "MAQ_ULTIME",
-        duration: { minutes: 20 }
+        duration: { minutes: 45 }
       },
       {
         type: "MAQ_FOCUS",
@@ -352,11 +376,19 @@ const allResources = [
       },
       {
         type: "MAQ_KAROLS",
+        duration: { minutes: 30 }
+      },
+      {
+        type: "COIF_STYL",
         duration: { minutes: 20 }
       },
       {
-        type: "VERNIS",
-        duration: { minutes: 10 }
+        type: "COIF_STYL_2",
+        duration: { minutes: 30 }
+      },
+      {
+        type: "COIF_STYL_3",
+        duration: { minutes: 45 }
       }
     ],
     week: {
@@ -404,19 +436,23 @@ const allResources = [
     quantity: 2,
     prestaTypes: [
       {
-        type: "COIF_STYL",
+        type: "COUPE_CLASS",
         duration: { minutes: 20 }
       },
       {
-        type: "COIF_STYL_2",
+        type: "COUPE_STYL",
         duration: { minutes: 20 }
       },
       {
-        type: "MAQ_KAROLS",
+        type: "VERNIS",
+        duration: { minutes: 10 }
+      },
+      {
+        type: "COUPE_HOMME",
         duration: { minutes: 20 }
       },
       {
-        type: "COIF_STYL_3",
+        type: "BARBE",
         duration: { minutes: 10 }
       }
     ],
