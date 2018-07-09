@@ -5,10 +5,8 @@ const validateBookingIntervalsHours = (bookingIntervals, resources) => {
     const openingHours = resources.find(
       resource => resource.name === bookingInterval.name
     ).week[bookingInterval.interval.start.weekday]
-    console.log(bookingInterval.interval)
     let matchOpeningHour = false
     for (let openingHour of openingHours) {
-      console.log(openingHour)
       if (
         Interval.fromDateTimes(
           bookingInterval.interval.start.set(openingHour.start),
