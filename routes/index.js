@@ -118,8 +118,8 @@ router.get("/timeslots", (req, res) => {
 router.post("/reservations", (req, res) => {
   if (req.body.shop) {
     Resource.find({ city: req.body.shop.city }).then(resources => {
-      //console.log("resources: ", resources)
       const booking = new Booking({
+        date: DateTime.fromISO(req.body.timeSlots.time.s).toJSDate(),
         city: req.body.shop.city,
         contact: req.body.contact,
         data: req.body,
@@ -183,6 +183,7 @@ router.post("/reservations", (req, res) => {
 
 router.post("/date-selected/:date", (req, res) => {
   if (req.body.shop) {
+    // Booking.find()
     Resource.find({ city: req.body.shop.city }).then(resources => {
       res.send(
         createWeekTimeSlots(

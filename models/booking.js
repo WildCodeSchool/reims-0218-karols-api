@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 
 const BookingSchema = mongoose.Schema({
+  date: Date,
   city: String,
   contact: Object,
   prestations: mongoose.Schema.Types.Mixed,
