@@ -3,8 +3,8 @@ const findResourceByType = require("../timeslots/findResourceByType")
 const createBookingDurations = (booking, resources) => {
   if (booking.service.id === 1) {
     return booking.preparations
-      .map(preparation =>
-        preparation.preparations
+      .map(preparation => {
+        return preparation.preparations
           .map(preparation => {
             const resource = findResourceByType(preparation.type, resources)
             return {
@@ -22,7 +22,7 @@ const createBookingDurations = (booking, resources) => {
               ).duration
             }
           })
-      )
+      })
       .reduce((acc, value) => acc.concat(value), [])
   } else if (booking.service.id === 2) {
     return resources

@@ -183,16 +183,15 @@ router.post("/reservations", (req, res) => {
 
 router.post("/date-selected/:date", (req, res) => {
   if (req.body.shop) {
-    // Booking.find()
-    Resource.find({ city: req.body.shop.city }).then(resources => {
-      res.send(
+    Resource.find({ city: req.body.shop.city })
+      .then(resources =>
         createWeekTimeSlots(
           DateTime.fromISO(req.params.date),
           req.body,
           resources
         )
       )
-    })
+      .then(timeSlots => res.send(timeSlots))
   }
 })
 
