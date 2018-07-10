@@ -38,9 +38,8 @@ const createWeekTimeSlots = (date, reservationData, resources) => {
 
   return Booking.find()
     .gte("date", day.toJSDate())
-    .lte("date", day.plus({ days: 6 }).toJSDate())
+    .lte("date", day.plus({ days: 5 }).toJSDate())
     .then(bookingsFromDb => {
-      //console.log(bookings)
       // create interval from durations
       const bookings = bookingsFromDb.map(booking => ({
         ...booking,
@@ -49,18 +48,17 @@ const createWeekTimeSlots = (date, reservationData, resources) => {
           booking.prestations
         )
       }))
-
+      let resource
+      if (reservationData.service.id === 1) {
+        resource = findResourceByType(
+          reservationData.preparations[0].preparations[0].type,
+          resources
+        )
+      }
+      if (reservationData.service.id === 2) {
+        resource = findResourceByType("TABLE", resources)
+      }
       for (let i = 0; i < 5; i++) {
-        let resource
-        if (reservationData.service.id === 1) {
-          resource = findResourceByType(
-            reservationData.preparations[0].preparations[0].type,
-            resources
-          )
-        }
-        if (reservationData.service.id === 2) {
-          resource = findResourceByType("TABLE", resources)
-        }
         dayArray.push({
           // On pousse dans le tableau vide les timeSlots crées pour chaque jour
           date: day.plus({ days: i }),
