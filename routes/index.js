@@ -195,4 +195,12 @@ router.post("/date-selected/:date", (req, res) => {
   }
 })
 
+router.get("/bookings/:city", (req, res) => {
+  //find bookings by city
+  const cityParam = req.params.city
+  const cityName =
+    cityParam.charAt(0).toUpperCase() + cityParam.substring(1).toLowerCase()
+  Booking.find({ city: cityName }).then(bookings => res.json(bookings))
+})
+
 module.exports = router
