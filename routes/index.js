@@ -119,7 +119,7 @@ router.post("/reservations", (req, res) => {
   if (req.body.shop) {
     Resource.find({ city: req.body.shop.city }).then(resources => {
       const booking = new Booking({
-        date: DateTime.fromISO(req.body.timeSlots.time.s).toJSDate(),
+        date: DateTime.fromISO(req.body.timeSlot.time.s).toJSDate(),
         city: req.body.shop.city,
         contact: req.body.contact,
         data: req.body,
