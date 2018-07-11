@@ -1,4 +1,6 @@
+const { Duration } = require("luxon")
 const findResourceByType = require("../timeslots/findResourceByType")
+const multiplyDuration = require("../timeslots/multiplyDuration")
 
 const createBookingDurations = (booking, resources) => {
   if (booking.service.id === 1) {
@@ -37,6 +39,55 @@ const createBookingDurations = (booking, resources) => {
           prestaType => prestaType.type === "TABLE"
         ).duration
       }))
+  } else if (booking.service.id === 3) {
+    let result = {}
+    for (let preparations of booking.countPreparation) {
+      for (let preparation of preparations.preparations) {
+        if (preparation.count > 0) {
+          const resource = findResourceByType(preparation.type, resources)
+          if (!result[resource.name]) {
+            result[resource.name] = {
+              name: resource.name,
+              duration: multiplyDuration(
+                Duration.fromObject(
+                  resource.prestaTypes.find(
+                    prestaType => prestaType.type === preparation.type
+                  ).duration
+                ),
+                preparation.count
+              ),
+              quantity: resource.quantity
+            }
+          } else {
+            result[resource.name].duration = result[
+              resource.name
+            ].duration.plus(
+              multiplyDuration(
+                Duration.fromObject(
+                  resource.prestaTypes.find(
+                    prestaType => prestaType.type === preparation.type
+                  ).duration
+                ),
+                preparation.count
+              )
+            )
+          }
+        }
+      }
+      // add table
+      const tableResource = findResourceByType("TABLE", resources)
+      result[tableResource.name] = {
+        name: tableResource.name,
+        type: "TABLE",
+        duration: Duration.fromObject(
+          tableResource.prestaTypes.find(
+            prestaType => prestaType.type === "TABLE"
+          ).duration
+        ),
+        quantity: tableResource.quantity
+      }
+    }
+    return Object.values(result)
   }
 }
 
