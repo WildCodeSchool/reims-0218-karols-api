@@ -6,7 +6,8 @@ const PreparationSchema = mongoose.Schema({
   count: Number,
   image: String,
   info: String,
-  titlePreparation: String
+  titlePreparation: String,
+  type: String
 })
 
 const PrestationSchema = mongoose.Schema({

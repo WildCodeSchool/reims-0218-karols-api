@@ -1,6 +1,7 @@
 const { assert } = require("chai")
 const { Interval } = require("luxon")
 const createBookingDurations = require("../timeslots/createBookingDurations")
+const createBookingIntervalsFromDurations = require("../timeslots/createBookingIntervalsFromDurations")
 
 const exampleResources = [
   {
@@ -40,12 +41,12 @@ const exampleResources = [
 describe("createBookingDurations", () => {
   it("should return an array of intervals with name and type info for a maquillage, coiffure, vernis booking", () => {
     const booking = {
-      selectedService: {
+      service: {
         id: 1,
         name: "Preparation",
         selected: true
       },
-      selectedPreparations: [
+      preparations: [
         {
           preparations: [
             {
@@ -96,7 +97,7 @@ describe("createBookingDurations", () => {
 
   it("should return an array of intervals with name and type info for a table booking", () => {
     const booking = {
-      selectedService: {
+      service: {
         id: 2,
         name: "Table",
         selected: true
@@ -118,21 +119,8 @@ describe("createBookingDurations", () => {
   })
 })
 
-const createBookingIntervalsFromDurations = (interval, bookingDurations) => {
-  let intervalsCount = 0
-  for (booking of bookingDurations) {
-    durationOfEach = booking.duration.minutes
-    return {
-      name: booking.name,
-      type: booking.type,
-      interval: Interval.after(durationOfEach, { minutes: 20 }),
-      duration: booking.duration
-    }
-  }
-}
-
 describe("createBookingIntervalsFromDurations", () => {
-  it.only("should return an array of intervals + type ans name booking info", () => {
+  it("should return an array of intervals + type ans name booking info", () => {
     const time = {
       year: 2018,
       month: 7,

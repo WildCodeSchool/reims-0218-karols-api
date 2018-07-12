@@ -5,6 +5,7 @@ const { DateTime, Interval } = require("luxon")
 const nodemailer = require("nodemailer")
 
 const createWeekTimeSlots = require("../timeslots/timeslots")
+const createBookingDurations = require("../timeslots/createBookingDurations")
 
 const Shop = require("../models/shop")
 const Prestation = require("../models/prestation")
@@ -12,6 +13,8 @@ const Service = require("../models/service")
 const Gender = require("../models/gender")
 const Table = require("../models/table")
 const Logo = require("../models/logo")
+const Resource = require("../models/resource")
+const Booking = require("../models/booking")
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -26,27 +29,31 @@ router.post("/", function(req, res) {
 router.get("/shops", (req, res) => {
   // get the shops collection
   Shop.find()
+    .sort({ id: 1 })
     .then(shops => res.json(shops))
     .catch(err => res.send(err))
 })
 
 router.get("/prestations", (req, res) => {
   //get the prestations collection
-  Prestation.find()
+  Prestation.find({})
+    .sort({ id: 1 })
     .then(prestations => res.json(prestations))
     .catch(err => res.send(err))
 })
 
 router.get("/services", (req, res) => {
   //get the services collection
-  Service.find()
+  Service.find({})
+    .sort({ id: 1 })
     .then(services => res.json(services))
     .catch(err => res.send(err))
 })
 
 router.get("/genders", (req, res) => {
   //get the genders collection
-  Gender.find()
+  Gender.find({})
+    .sort({ gender: -1 })
     .then(genders => res.json(genders))
     .catch(err => res.send(err))
 })
@@ -68,24 +75,30 @@ router.get("/logo", (req, res) => {
 router.get("/shops-prestations", (req, res) => {
   Shop.find()
     .then(shops => {
-      Prestation.find().then(prestations => {
-        Service.find().then(services => {
-          Gender.find().then(genders => {
-            Table.findOne().then(table => {
-              Logo.findOne().then(logo => {
-                res.json({
-                  shops,
-                  prestations,
-                  services,
-                  genders,
-                  table,
-                  logo
+      Prestation.find({})
+        .sort({ id: 1 })
+        .then(prestations => {
+          Service.find({})
+            .sort({ id: 1 })
+            .then(services => {
+              Gender.find()
+                .sort({ gender: -1 })
+                .then(genders => {
+                  Table.findOne().then(table => {
+                    Logo.findOne().then(logo => {
+                      res.json({
+                        shops,
+                        prestations,
+                        services,
+                        genders,
+                        table,
+                        logo
+                      })
+                    })
+                  })
                 })
-              })
             })
-          })
         })
-      })
     })
     .catch(err => res.send(err))
 })
@@ -103,19 +116,24 @@ router.get("/timeslots", (req, res) => {
 })
 
 router.post("/reservations", (req, res) => {
-  console.log("body de Tanguy", req.body.selectedTimeSlot.time.s)
-  res.json({
-    name: "Reservation",
-    success: true
-  })
+  if (req.body.shop) {
+    Resource.find({ city: req.body.shop.city }).then(resources => {
+      const booking = new Booking({
+        date: DateTime.fromISO(req.body.timeSlot.time.s).toJSDate(),
+        city: req.body.shop.city,
+        contact: req.body.contact,
+        data: req.body,
+        prestations: createBookingDurations(req.body, resources)
+      })
+      booking.save(err => console.log(err))
+      res.json({
+        name: "Reservation",
+        success: true
+      })
+    })
+  }
 
-  const transformTimeSlot = timeSlot =>
-    DateTime.fromISO(req.body.selectedTimeSlot.time.s)
-      .setLocale("fr")
-      .toFormat("cccc dd LLLL HH 'h' mm")
-
-  console.log(transformTimeSlot("2018-06-29T09:15:00.000+02:00"))
-
+  /* 
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -160,12 +178,29 @@ router.post("/reservations", (req, res) => {
         console.log("Message sent: Confirmation de mail envoyée ")
       }
     }
-  )
+  )*/
 })
 
-router.get("/date-selected/:date", (req, res) => {
-  console.log("date : ", req.params.date)
-  res.send(createWeekTimeSlots(DateTime.fromISO(req.params.date)))
+router.post("/date-selected/:date", (req, res) => {
+  if (req.body.shop) {
+    Resource.find({ city: req.body.shop.city })
+      .then(resources =>
+        createWeekTimeSlots(
+          DateTime.fromISO(req.params.date),
+          req.body,
+          resources
+        )
+      )
+      .then(timeSlots => res.send(timeSlots))
+  }
+})
+
+router.get("/bookings/:city", (req, res) => {
+  //find bookings by city
+  const cityParam = req.params.city
+  const cityName =
+    cityParam.charAt(0).toUpperCase() + cityParam.substring(1).toLowerCase()
+  Booking.find({ city: cityName }).then(bookings => res.json(bookings))
 })
 
 module.exports = router

@@ -1,24 +1,30 @@
 const findResourceByType = require("../timeslots/findResourceByType")
 
 const createBookingDurations = (booking, resources) => {
-  if (booking.selectedService.id === 1) {
-    return booking.selectedPreparations
-      .map(selectedPreparation =>
-        selectedPreparation.preparations
-          .map(preparation => ({
-            ...findResourceByType(preparation.type, resources),
-            type: preparation.type
-          }))
-          .map(element => ({
-            name: element.name,
-            type: element.type,
-            duration: element.prestaTypes.find(
-              prestaType => prestaType.type === element.type
-            ).duration
-          }))
-      )
+  if (booking.service.id === 1) {
+    return booking.preparations
+      .map(preparation => {
+        return preparation.preparations
+          .map(preparation => {
+            const resource = findResourceByType(preparation.type, resources)
+            return {
+              name: resource.name,
+              type: preparation.type,
+              prestaTypes: resource.prestaTypes
+            }
+          })
+          .map(element => {
+            return {
+              name: element.name,
+              type: element.type,
+              duration: element.prestaTypes.find(
+                prestaType => prestaType.type === element.type
+              ).duration
+            }
+          })
+      })
       .reduce((acc, value) => acc.concat(value), [])
-  } else if (booking.selectedService.id === 2) {
+  } else if (booking.service.id === 2) {
     return resources
       .map(element => element)
       .filter(prestation => prestation.name === "TABLES")

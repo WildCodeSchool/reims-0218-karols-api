@@ -1,4 +1,4 @@
-const { DateTime, Interval } = require("luxon")
+const { Interval } = require("luxon")
 
 const createDayIntervals = (date, resource) =>
   resource.week[date.weekday]
