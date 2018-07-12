@@ -1,3 +1,4 @@
 {
-  "url": "mongodb://karolsdb:e1b98a66f2e136fe78aea7e792ce9f91@wilder-artemis.fr:4242/karolsdb"
+  "url":
+    "mongodb://karolsdb:33b1ede1ae58adab80a615a79b256585@karolsresa.fr:4242/karolsdb"
 }
