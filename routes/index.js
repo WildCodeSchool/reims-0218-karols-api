@@ -184,7 +184,9 @@ router.post("/reservations", (req, res) => {
 router.delete("/bookings/:id", (req, res) => {
   console.log(req.params.id)
   //Booking.map(booking => console.log(booking.id))
-  Booking.deleteOne({ id: req.params.id }).then(bookings => res.json(bookings))
+  Booking.deleteOne({ _id: req.params.id }).then(() =>
+    res.json({ bookingId: req.params.id })
+  )
   //res.send(console.log(Booking))
 })
 
