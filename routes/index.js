@@ -181,6 +181,15 @@ router.post("/reservations", (req, res) => {
   )*/
 })
 
+router.delete("/bookings/:id", (req, res) => {
+  console.log(req.params.id)
+  //Booking.map(booking => console.log(booking.id))
+  Booking.deleteOne({ _id: req.params.id }).then(() =>
+    res.json({ bookingId: req.params.id })
+  )
+  //res.send(console.log(Booking))
+})
+
 router.post("/date-selected/:date", (req, res) => {
   if (req.body.shop) {
     Resource.find({ city: req.body.shop.city })
