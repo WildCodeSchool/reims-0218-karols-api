@@ -2,6 +2,9 @@ const express = require("express")
 const router = express.Router()
 const mongoose = require("mongoose")
 const { DateTime, Interval } = require("luxon")
+const moment = require("moment")
+
+moment.locale("fr")
 const nodemailer = require("nodemailer")
 
 const createWeekTimeSlots = require("../timeslots/timeslots")
@@ -133,7 +136,6 @@ router.post("/reservations", (req, res) => {
     })
   }
 
-  /* 
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -141,33 +143,33 @@ router.post("/reservations", (req, res) => {
       pass: "eRwKiiPwSpMr56wXCD"
     }
   })
+  console.log(req.body)
   // parametre l'objet reservation ,
   // module.export : sendMail
 
   smtpTransport.sendMail(
     {
       from: "KAROLS <marlowdevweb@gmail.com>", // Expediteur
-      to: `${req.body.selectedForm.email}`, // Destinataires
-      subject: `Confirmation de votre réservation à ${
-        req.body.selectedShop.city
-      }`, // Sujet
+      to: `${req.body.contact.email}`, // Destinataires
+      subject: `Confirmation de votre réservation à ${req.body.shop.city}`, // Sujet
       html: `<h1 style="margin-bottom: 10px;"> Hey ${
-        req.body.selectedForm.firstName
+        req.body.contact.firstName
       } !</h1><p  style="font-size: 20px;">Vous avez réservé pour ${
-        req.body.selectedShop.city
+        req.body.shop.city
       }</p>
 
       Vous avez pris les préparations ci-dessous :
       <ul style="list-style-type: none;">
-      ${req.body.selectedPreparations.map(
-        service => `<li>${service.preparations[0].titlePreparation}</li>`
+      ${req.body.preparations.map(
+        service =>
+          `<li style="font-size:30px;">${
+            service.preparations[0].titlePreparation
+          }</li>`
       )}
       </ul>
-      <p> Vous serez pris en charge le ${DateTime.fromISO(
-        req.body.selectedTimeSlot.time.s
-      )
-        .setLocale("fr")
-        .toFormat("cccc dd LLLL HH 'h' mm")} </p>
+      <p style="font-weight: bold; font-size:30px;"> Vous serez pris en charge le ${moment(
+        req.body.timeSlot.time.s
+      ).format("dddd Do, MMMM  YYYY, à H:mm:ss")}</p>
       
       <footer><img src="https://image.noelshack.com/fichiers/2018/25/5/1529659014-logoemail.png"/></footer>`
     },
@@ -178,7 +180,7 @@ router.post("/reservations", (req, res) => {
         console.log("Message sent: Confirmation de mail envoyée ")
       }
     }
-  )*/
+  )
 })
 
 router.delete("/bookings/:id", (req, res) => {
