@@ -22,3 +22,7 @@ dsn: mongodb://karolsdb:33b1ede1ae58adab80a615a79b256585@karolsresa.fr:4242/karo
 ```
 git push dokku master
 ```
+
+## TODO
+
+change mongo dsn
