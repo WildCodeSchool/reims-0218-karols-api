@@ -36,6 +36,10 @@ const exampleResources = [
         duration: { minutes: 20 }
       },
       {
+        type: "MAQ_FOCUS",
+        duration: { minutes: 15 }
+      },
+      {
         type: "VERNIS",
         duration: { minutes: 10 }
       }
@@ -48,6 +52,10 @@ const exampleResources = [
       {
         type: "COUPE_F",
         duration: { minutes: 30 }
+      },
+      {
+        type: "COUPE_FS",
+        duration: { minutes: 40 }
       }
     ]
   },
@@ -154,7 +162,11 @@ describe("createBookingDurations", () => {
           preparations: [
             {
               type: "MAQ_ULT",
-              count: 2
+              count: 3
+            },
+            {
+              type: "MAQ_FOCUS",
+              count: 1
             }
           ]
         },
@@ -162,6 +174,10 @@ describe("createBookingDurations", () => {
           preparations: [
             {
               type: "COUPE_F",
+              count: 1
+            },
+            {
+              type: "COUPE_FS",
               count: 2
             }
           ]
@@ -180,19 +196,38 @@ describe("createBookingDurations", () => {
     const expected = [
       {
         name: "SALARIE-A",
-        duration: Duration.fromObject({ minutes: 50 }),
-        quantity: 2
+        type: "MAQ_ULT / MAQ_ULT",
+        duration: { minutes: 20 },
+        quantity: 2,
+        count: 2
+      },
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT / MAQ_FOCUS",
+        duration: { minutes: 20 },
+        quantity: 2,
+        count: 2
       },
       {
         name: "TABLES",
         type: "TABLE",
-        duration: Duration.fromObject({ hours: 2 }),
-        quantity: 2
+        duration: { hours: 2 },
+        quantity: 2,
+        count: 1
       },
       {
         name: "SALARIE-B",
-        duration: Duration.fromObject({ minutes: 60 }),
-        quantity: 2
+        type: "COUPE_F / COUPE_FS",
+        duration: { minutes: 40 },
+        quantity: 2,
+        count: 2
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE_FS",
+        duration: { minutes: 40 },
+        quantity: 2,
+        count: 1
       }
     ]
     assert.deepEqual(
