@@ -198,35 +198,30 @@ describe("createBookingDurations", () => {
         name: "SALARIE-A",
         type: "MAQ_ULT / MAQ_ULT",
         duration: { minutes: 20 },
-        quantity: 2,
         count: 2
       },
       {
         name: "SALARIE-A",
         type: "MAQ_ULT / MAQ_FOCUS",
         duration: { minutes: 20 },
-        quantity: 2,
         count: 2
       },
       {
         name: "TABLES",
         type: "TABLE",
         duration: { hours: 2 },
-        quantity: 2,
         count: 1
       },
       {
         name: "SALARIE-B",
         type: "COUPE_F / COUPE_FS",
         duration: { minutes: 40 },
-        quantity: 2,
         count: 2
       },
       {
         name: "SALARIE-B",
         type: "COUPE_FS",
         duration: { minutes: 40 },
-        quantity: 2,
         count: 1
       }
     ]
