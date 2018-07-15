@@ -233,7 +233,7 @@ describe("createBookingDurations", () => {
 })
 
 describe("createBookingIntervalsFromDurations", () => {
-  it("should return an array of intervals + type ans name booking info", () => {
+  it("should return an array of intervals + type ans name booking info for table plus prestation", () => {
     const time = {
       year: 2018,
       month: 7,
@@ -287,30 +287,35 @@ describe("createBookingIntervalsFromDurations", () => {
         name: "SALARIE-A",
         type: "MAQ_ULT / MAQ_ULT",
         interval: i1,
+        duration: { minutes: 20 },
         count: 2
       },
       {
         name: "SALARIE-A",
         type: "MAQ_ULT / MAQ_FOCUS",
         interval: i2,
+        duration: { minutes: 20 },
         count: 2
       },
       {
         name: "TABLES",
         type: "TABLE",
         interval: iTable,
+        duration: { hours: 2 },
         count: 1
       },
       {
         name: "SALARIE-B",
         type: "COUPE_F / COUPE_FS",
         interval: i3,
+        duration: { minutes: 40 },
         count: 2
       },
       {
         name: "SALARIE-B",
         type: "COUPE_FS",
         interval: i4,
+        duration: { minutes: 40 },
         count: 1
       }
     ]
@@ -320,7 +325,7 @@ describe("createBookingIntervalsFromDurations", () => {
       expected
     )
   })
-  it("should return an array of intervals + type ans name booking info for table plus prestation", () => {
+  it("should return an array of intervals + type ans name booking info", () => {
     const time = {
       year: 2018,
       month: 7,
