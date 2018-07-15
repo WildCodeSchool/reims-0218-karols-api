@@ -244,6 +244,93 @@ describe("createBookingIntervalsFromDurations", () => {
     const interval = Interval.after(time, { minutes: 15 })
 
     const i1 = Interval.after(time, { minutes: 20 })
+    const i2 = Interval.after(i1.end, { minutes: 20 })
+    const i3 = Interval.after(i2.end, { minutes: 40 })
+    const i4 = Interval.after(i3.end, { minutes: 40 })
+    const iTable = Interval.after(time, { hours: 2 })
+
+    const bookingDurations = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT / MAQ_ULT",
+        duration: { minutes: 20 },
+        count: 2
+      },
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT / MAQ_FOCUS",
+        duration: { minutes: 20 },
+        count: 2
+      },
+      {
+        name: "TABLES",
+        type: "TABLE",
+        duration: { hours: 2 },
+        count: 1
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE_F / COUPE_FS",
+        duration: { minutes: 40 },
+        count: 2
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE_FS",
+        duration: { minutes: 40 },
+        count: 1
+      }
+    ]
+
+    const expected = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT / MAQ_ULT",
+        interval: i1,
+        count: 2
+      },
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT / MAQ_FOCUS",
+        interval: i2,
+        count: 2
+      },
+      {
+        name: "TABLES",
+        type: "TABLE",
+        interval: iTable,
+        count: 1
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE_F / COUPE_FS",
+        interval: i3,
+        count: 2
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE_FS",
+        interval: i4,
+        count: 1
+      }
+    ]
+
+    assert.deepEqual(
+      createBookingIntervalsFromDurations(interval, bookingDurations),
+      expected
+    )
+  })
+  it("should return an array of intervals + type ans name booking info for table plus prestation", () => {
+    const time = {
+      year: 2018,
+      month: 7,
+      day: 9,
+      hour: 17
+    }
+
+    const interval = Interval.after(time, { minutes: 15 })
+
+    const i1 = Interval.after(time, { minutes: 20 })
     const i2 = Interval.after(i1.end, { minutes: 30 })
     const i3 = Interval.after(i2.end, { minutes: 10 })
 
