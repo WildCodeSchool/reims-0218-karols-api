@@ -3,7 +3,8 @@
 const allTables = [
   {
     count: 2,
-    image: "http://bar-legacy.com/img/main_6.jpg"
+    image:
+      "http://res.cloudinary.com/dlfnke6kc/image/upload/v1531730293/projet3/main_6.jpg"
   }
 ]
 
