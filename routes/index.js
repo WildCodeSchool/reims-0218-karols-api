@@ -158,15 +158,37 @@ router.post("/reservations", (req, res) => {
         req.body.shop.city
       }</p>
 
-      Vous avez pris les préparations ci-dessous :
+      ${
+        req.body.service.id === 1 || req.body.service.id === 3
+          ? `<p  style="font-size:20px;>Vous avez pris les préparations ci-dessous :</p>`
+          : ""
+      }
       <ul style="list-style-type: none;">
-      ${req.body.preparations.map(
-        service =>
-          `<li style="font-size:30px;">${
-            service.preparations[0].titlePreparation
-          }</li>`
-      )}
+      ${
+        req.body.service.id === 1 // pour service préparation
+          ? req.body.preparations.map(
+              service =>
+                `<li style="font-size:30px; margin: 10px; list-style:none;">${
+                  service.preparations[0].titlePreparation
+                }</li>`
+            )
+          : ""
+      }
       </ul>
+
+            ${
+              req.body.service.id === 2 // pour service table
+                ? `<p style="font-size:30px;"> Vous avez reservé le service ${
+                    req.body.service.name
+                  } pour ${req.body.countTable} personnes </p>`
+                : ""
+            }
+
+            ${
+              req.body.service.id === 3 // pour table + préparation
+                ? ``
+                : ""
+            } 
       <p style="font-weight: bold; font-size:30px;"> Vous serez pris en charge le ${moment(
         req.body.timeSlot.time.s
       ).format("dddd Do, MMMM  YYYY, à H:mm:ss")}</p>
