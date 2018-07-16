@@ -212,12 +212,6 @@ describe("createBookingDurations", () => {
         count: 2
       },
       {
-        name: "TABLES",
-        type: "TABLE",
-        duration: { hours: 2 },
-        count: 1
-      },
-      {
         name: "SALARIE-B",
         type: "COUPE_F / COUPE_FS",
         duration: { minutes: 40 },
@@ -227,6 +221,18 @@ describe("createBookingDurations", () => {
         name: "SALARIE-B",
         type: "COUPE_FS",
         duration: { minutes: 40 },
+        count: 1
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        duration: { minutes: 10 },
+        count: 1
+      },
+      {
+        name: "TABLES",
+        type: "TABLE",
+        duration: { hours: 2 },
         count: 1
       }
     ]
