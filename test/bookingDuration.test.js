@@ -273,12 +273,7 @@ describe("createBookingIntervalsFromDurations", () => {
         duration: { minutes: 20 },
         count: 2
       },
-      {
-        name: "TABLES",
-        type: "TABLE",
-        duration: { hours: 2 },
-        count: 1
-      },
+
       {
         name: "SALARIE-B",
         type: "COUPE_F / COUPE_FS",
@@ -289,6 +284,12 @@ describe("createBookingIntervalsFromDurations", () => {
         name: "SALARIE-B",
         type: "COUPE_FS",
         duration: { minutes: 40 },
+        count: 1
+      },
+      {
+        name: "TABLES",
+        type: "TABLE",
+        duration: { hours: 2 },
         count: 1
       }
     ]
@@ -309,13 +310,6 @@ describe("createBookingIntervalsFromDurations", () => {
         count: 2
       },
       {
-        name: "TABLES",
-        type: "TABLE",
-        interval: iTable,
-        duration: { hours: 2 },
-        count: 1
-      },
-      {
         name: "SALARIE-B",
         type: "COUPE_F / COUPE_FS",
         interval: i3,
@@ -327,6 +321,13 @@ describe("createBookingIntervalsFromDurations", () => {
         type: "COUPE_FS",
         interval: i4,
         duration: { minutes: 40 },
+        count: 1
+      },
+      {
+        name: "TABLES",
+        type: "TABLE",
+        interval: iTable,
+        duration: { hours: 2 },
         count: 1
       }
     ]
@@ -341,7 +342,8 @@ describe("createBookingIntervalsFromDurations", () => {
       year: 2018,
       month: 7,
       day: 9,
-      hour: 17
+      hour: 17,
+      minutes: 0
     }
 
     const interval = Interval.after(time, { minutes: 15 })
