@@ -41,6 +41,10 @@ const exampleResources = [
         duration: { minutes: 15 }
       },
       {
+        type: "MAQ_BAS",
+        duration: { minutes: 15 }
+      },
+      {
         type: "VERNIS",
         duration: { minutes: 10 }
       }
@@ -197,7 +201,7 @@ describe("createBookingDurations", () => {
     const expected = [
       {
         name: "SALARIE-A",
-        type: "MAQ_ULT / MAQ_ULT",
+        type: "MAQ_ULT",
         duration: { minutes: 20 },
         count: 2
       },
@@ -394,6 +398,10 @@ describe("allocateResourceByPrestation", () => {
         count: 3
       },
       {
+        type: "MAQ_BAS",
+        count: 0
+      },
+      {
         type: "MAQ_FOCUS",
         count: 1
       }
@@ -404,6 +412,10 @@ describe("allocateResourceByPrestation", () => {
       prestaTypes: [
         {
           type: "MAQ_ULT",
+          duration: { minutes: 20 }
+        },
+        {
+          type: "MAQ_BAS",
           duration: { minutes: 20 }
         },
         {

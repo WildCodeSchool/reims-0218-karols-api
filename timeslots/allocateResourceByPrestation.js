@@ -3,7 +3,11 @@ const allocateResourceByPrestation = (preparations, resource) => {
   let leftToAllocate = 0
   for (let preparation of preparations) {
     leftToAllocate += preparation.count
-    if (result.length > 0 && result.slice(-1)[0].count < resource.quantity) {
+    if (
+      leftToAllocate > 0 &&
+      result.length > 0 &&
+      result.slice(-1)[0].count < resource.quantity
+    ) {
       const freeResource = resource.quantity - result.slice(-1)[0].count
       const allocated =
         leftToAllocate < freeResource ? leftToAllocate : freeResource
