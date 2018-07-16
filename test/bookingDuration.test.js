@@ -384,3 +384,105 @@ describe("createBookingIntervalsFromDurations", () => {
     )
   })
 })
+
+const allocateResourceByPrestation = (preparations, resource) => null
+
+describe("allocateResourceByPrestation", () => {
+  it("should allocate resource by prestation if first preparation is more than second", () => {
+    const preparations = [
+      {
+        type: "MAQ_ULT",
+        count: 3
+      },
+      {
+        type: "MAQ_FOCUS",
+        count: 1
+      }
+    ]
+    const resource = {
+      quantity: 2,
+      name: "SALARIE-A",
+      prestaTypes: [
+        {
+          type: "MAQ_ULT",
+          duration: { minutes: 20 }
+        },
+        {
+          type: "MAQ_FOCUS",
+          duration: { minutes: 15 }
+        },
+        {
+          type: "VERNIS",
+          duration: { minutes: 10 }
+        }
+      ]
+    }
+    const expected = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT / MAQ_ULT",
+        duration: { minutes: 20 },
+        count: 2
+      },
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT / MAQ_FOCUS",
+        duration: { minutes: 20 },
+        count: 2
+      }
+    ]
+    assert.deepEqual(
+      allocateResourceByPrestation(preparations, resource),
+      expected
+    )
+  })
+  it("should allocate resource by prestation if first preparation is less than second", () => {
+    const preparations = [
+      {
+        type: "COUPE_F",
+        count: 1
+      },
+      {
+        type: "COUPE_FS",
+        count: 2
+      }
+    ]
+    const resource = {
+      quantity: 2,
+      name: "SALARIE-A",
+      prestaTypes: [
+        {
+          type: "MAQ_ULT",
+          duration: { minutes: 20 }
+        },
+        {
+          type: "MAQ_FOCUS",
+          duration: { minutes: 15 }
+        },
+        {
+          type: "VERNIS",
+          duration: { minutes: 10 }
+        }
+      ]
+    }
+    const expected = [
+      {
+        name: "SALARIE-B",
+        type: "COUPE_F / COUPE_FS",
+        duration: { minutes: 40 },
+        count: 2
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE_FS",
+        duration: { minutes: 40 },
+        count: 1
+      }
+    ]
+
+    assert.deepEqual(
+      allocateResourceByPrestation(preparations, resource),
+      expected
+    )
+  })
+})
