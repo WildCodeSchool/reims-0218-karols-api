@@ -4,6 +4,7 @@ const { Duration, Interval } = require("luxon")
 const multiplyDuration = require("../timeslots/multiplyDuration")
 const createBookingDurations = require("../timeslots/createBookingDurations")
 const createBookingIntervalsFromDurations = require("../timeslots/createBookingIntervalsFromDurations")
+const allocateResourceByPrestation = require("../timeslots/allocateResourceByPrestation")
 
 describe("multiplyDuration", () => {
   it("should multiply by 2", () => {
@@ -385,8 +386,6 @@ describe("createBookingIntervalsFromDurations", () => {
   })
 })
 
-const allocateResourceByPrestation = (preparations, resource) => null
-
 describe("allocateResourceByPrestation", () => {
   it("should allocate resource by prestation if first preparation is more than second", () => {
     const preparations = [
@@ -420,7 +419,7 @@ describe("allocateResourceByPrestation", () => {
     const expected = [
       {
         name: "SALARIE-A",
-        type: "MAQ_ULT / MAQ_ULT",
+        type: "MAQ_ULT",
         duration: { minutes: 20 },
         count: 2
       },
@@ -449,19 +448,15 @@ describe("allocateResourceByPrestation", () => {
     ]
     const resource = {
       quantity: 2,
-      name: "SALARIE-A",
+      name: "SALARIE-B",
       prestaTypes: [
         {
-          type: "MAQ_ULT",
-          duration: { minutes: 20 }
+          type: "COUPE_F",
+          duration: { minutes: 30 }
         },
         {
-          type: "MAQ_FOCUS",
-          duration: { minutes: 15 }
-        },
-        {
-          type: "VERNIS",
-          duration: { minutes: 10 }
+          type: "COUPE_FS",
+          duration: { minutes: 40 }
         }
       ]
     }
