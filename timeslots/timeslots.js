@@ -55,7 +55,10 @@ const createWeekTimeSlots = (date, reservationData, resources) => {
           resources
         )
       }
-      if (reservationData.service.id === 2) {
+      if (
+        reservationData.service.id === 2 ||
+        reservationData.service.id === 3
+      ) {
         resource = findResourceByType("TABLE", resources)
       }
       for (let i = 0; i < 5; i++) {

@@ -1,4 +1,6 @@
+const { Duration } = require("luxon")
 const findResourceByType = require("../timeslots/findResourceByType")
+const allocateResourceByPrestation = require("../timeslots/allocateResourceByPrestation")
 
 const createBookingDurations = (booking, resources) => {
   if (booking.service.id === 1) {
@@ -37,6 +39,24 @@ const createBookingDurations = (booking, resources) => {
           prestaType => prestaType.type === "TABLE"
         ).duration
       }))
+  } else if (booking.service.id === 3) {
+    let result = []
+    for (let { preparations } of booking.countPreparation) {
+      const resource = findResourceByType(preparations[0].type, resources)
+      result = result.concat(
+        allocateResourceByPrestation(preparations, resource)
+      )
+    }
+
+    // add table
+    result = result.concat({
+      name: "TABLES",
+      type: "TABLE",
+      duration: { hours: 2 },
+      count: 1
+    })
+
+    return result
   }
 }
 
