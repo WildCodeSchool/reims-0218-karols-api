@@ -3,6 +3,8 @@ const router = express.Router()
 const { DateTime } = require("luxon")
 const moment = require("moment")
 
+require("dotenv").config()
+
 moment.locale("fr")
 const nodemailer = require("nodemailer")
 
@@ -138,8 +140,8 @@ router.post("/reservations", (req, res) => {
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: "marlowdevweb@gmail.com",
-      pass: "eRwKiiPwSpMr56wXCD"
+      user: process.env.USER_EMAIL,
+      pass: process.env.PASS_EMAIL
     }
   })
   // parametre l'objet reservation ,
