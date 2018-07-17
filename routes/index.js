@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const mongoose = require("mongoose")
-const { DateTime, Interval } = require("luxon")
+const { DateTime } = require("luxon")
 const moment = require("moment")
 
 moment.locale("fr")
@@ -143,7 +142,6 @@ router.post("/reservations", (req, res) => {
       pass: "eRwKiiPwSpMr56wXCD"
     }
   })
-  console.log(req.body)
   // parametre l'objet reservation ,
   // module.export : sendMail
 
@@ -233,7 +231,10 @@ router.get("/bookings/:city", (req, res) => {
   const cityParam = req.params.city
   const cityName =
     cityParam.charAt(0).toUpperCase() + cityParam.substring(1).toLowerCase()
-  Booking.find({ city: cityName }).then(bookings => res.json(bookings))
+  Booking.find({ city: cityName })
+    .gte("date", DateTime.local().set({ hour: 0, minute: 00 }))
+    .sort({ date: 1 })
+    .then(bookings => res.json(bookings))
 })
 
 module.exports = router
