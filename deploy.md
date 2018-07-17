@@ -13,6 +13,7 @@ dokku mongo:create karolsdb
 dokku mongo:expose karolsdb 4242 4243 4244 4245
 dokku mongo:info karolsdb
 dokku config:set api ME_CONFIG_MONGODB_URL=mongodb://karolsdb:33b1ede1ae58adab80a615a79b256585@karolsresa.fr:4242/karolsdb
+dokku run api ./node_modules/.bin/mm
 ```
 
 dsn: mongodb://karolsdb:33b1ede1ae58adab80a615a79b256585@karolsresa.fr:4242/karolsdb
