@@ -172,6 +172,7 @@ router.post("/reservations", (req, res) => {
             )
           : ""
       }
+
       </ul>
 
             ${
@@ -182,11 +183,29 @@ router.post("/reservations", (req, res) => {
                 : ""
             }
 
+
             ${
-              req.body.service.id === 3 // pour table + préparation
-                ? ``
+              req.body.service.id === 3
+                ? `
+                <ul>
+                ${req.body.countPreparation.map(preparation =>
+                  preparation.preparations.map(
+                    preparation =>
+                      preparation.count > 0
+                        ? `
+                    <p>
+                      Vous avez choisi ${preparation.count} ${
+                            preparation.titlePreparation
+                          }
+                    </p>`
+                        : ""
+                  )
+                )}
+                    </ul>`
                 : ""
-            } 
+            }
+                  
+
       <p style="font-weight: bold; font-size:30px;"> Vous serez pris en charge le ${moment(
         req.body.timeSlot.time.s
       ).format("dddd Do, MMMM  YYYY, à H:mm:ss")}</p>
