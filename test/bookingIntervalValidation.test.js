@@ -387,6 +387,90 @@ describe("validateBookingIntervals", () => {
       )
     )
   })
+
+  it("should return true if intervals overlaps + count with booking less than resource quantity", () => {
+    const time = {
+      year: 2018,
+      month: 7,
+      day: 9,
+      hour: 16,
+      minutes: 50
+    }
+    const i1ToTest = Interval.after(time, { minutes: 20 }) // 16:50 to 17:10 overlaps with i1
+    const i2ToTest = Interval.after(i1ToTest.end, { minutes: 30 }) // 17:10 to 17:40 overlaps with i2
+    const i3ToTest = Interval.after(i2ToTest.end, { minutes: 10 }) // 17:40 to 17:50
+
+    const validBookingIntervals = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT",
+        interval: i1ToTest,
+        count: 1
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE-F",
+        interval: i2ToTest,
+        count: 1
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        interval: i3ToTest,
+        count: 2
+      }
+    ]
+
+    assert.isTrue(
+      validateBookingIntervals(
+        validBookingIntervals,
+        bookings,
+        exampleResources
+      )
+    )
+  })
+
+  it("should return false if intervals overlaps + count with booking more  than resource quantity", () => {
+    const time = {
+      year: 2018,
+      month: 7,
+      day: 9,
+      hour: 16,
+      minutes: 50
+    }
+    const i1ToTest = Interval.after(time, { minutes: 20 }) // 16:50 to 17:10 overlaps with i1
+    const i2ToTest = Interval.after(i1ToTest.end, { minutes: 30 }) // 17:10 to 17:40 overlaps with i2
+    const i3ToTest = Interval.after(i2ToTest.end, { minutes: 10 }) // 17:40 to 17:50
+
+    const inValidBookingIntervals = [
+      {
+        name: "SALARIE-A",
+        type: "MAQ_ULT",
+        interval: i1ToTest,
+        count: 2
+      },
+      {
+        name: "SALARIE-B",
+        type: "COUPE-F",
+        interval: i2ToTest,
+        count: 2
+      },
+      {
+        name: "SALARIE-A",
+        type: "VERNIS",
+        interval: i3ToTest,
+        count: 2
+      }
+    ]
+
+    assert.isTrue(
+      validateBookingIntervals(
+        inValidBookingIntervals,
+        bookings,
+        exampleResources
+      )
+    )
+  })
 })
 
 describe("validateBookingIntervalsHours", () => {
