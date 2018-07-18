@@ -137,6 +137,8 @@ router.post("/reservations", (req, res) => {
     })
   }
 
+  console.log(req.body)
+
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -160,18 +162,20 @@ router.post("/reservations", (req, res) => {
 
       ${
         req.body.service.id === 1 || req.body.service.id === 3
-          ? `<p  style="font-size:20px;>Vous avez pris les préparations ci-dessous :</p>`
+          ? `<p  style="font-size:20px;">Vous avez pris les préparations ci-dessous :</p>`
           : ""
       }
       <ul style="list-style-type: none;">
       ${
         req.body.service.id === 1 // pour service préparation
-          ? req.body.preparations.map(
-              service =>
-                `<li style="font-size:30px; margin: 10px; list-style:none;">${
-                  service.preparations[0].titlePreparation
-                }</li>`
-            )
+          ? req.body.preparations
+              .map(
+                service =>
+                  `<li style="font-size:30px; margin: 10px; list-style:none;">${
+                    service.preparations[0].titlePreparation
+                  }</li>`
+              )
+              .join(" ")
           : ""
       }
 
@@ -190,29 +194,160 @@ router.post("/reservations", (req, res) => {
               req.body.service.id === 3
                 ? `
                 <ul>
-                ${req.body.countPreparation.map(preparation =>
-                  preparation.preparations.map(
-                    preparation =>
-                      preparation.count > 0
-                        ? `
+                ${req.body.countPreparation
+                  .map(preparation =>
+                    preparation.preparations
+                      .map(
+                        preparation =>
+                          preparation.count > 0
+                            ? `
                     <p>
                       Vous avez choisi ${preparation.count} ${
-                            preparation.titlePreparation
-                          }
+                                preparation.titlePreparation
+                              }
                     </p>`
-                        : ""
+                            : ""
+                      )
+                      .join(" ")
                   )
-                )}
+                  .join(" ")}
                     </ul>`
+                : ""
+            }
+
+            ${
+              req.body.service.id === 3
+                ? `${req.body.countGender
+                    .map(
+                      gender =>
+                        gender.sex === "M"
+                          ? `<p>
+                        Vous êtes ${gender.count} homme${
+                              gender.count > 1 ? "s" : ""
+                            }
+                      </p>`
+                          : "" || gender.sex === "F"
+                            ? `<p>
+                        Vous êtes ${gender.count} femme${
+                                gender.count > 1 ? "s" : ""
+                              }
+                      </p>`
+                            : ""
+                    )
+                    .join(" ")}`
                 : ""
             }
                   
 
       <p style="font-weight: bold; font-size:30px;"> Vous serez pris en charge le ${moment(
         req.body.timeSlot.time.s
-      ).format("dddd Do, MMMM  YYYY, à H:mm:ss")}</p>
+      ).format("dddd Do MMMM  YYYY à H:mm:ss")}</p>
       
-      <footer><img src="https://image.noelshack.com/fichiers/2018/25/5/1529659014-logoemail.png"/></footer>`
+      <footer><img src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png" style="height: 100px; width=300px;"/></footer>`
+    },
+    (error, response) => {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log("Message sent: Confirmation de mail envoyée ")
+      }
+    }
+  )
+
+  smtpTransport.sendMail(
+    {
+      from: "KAROLS <marlowdevweb@gmail.com>", // Expediteur
+      to: process.env.ADMIN_EMAIL, // Destinataires
+      subject: `Nouvelle réservation à ${req.body.shop.city}`, // Sujet
+      html: `<h1 style="margin-bottom: 10px;"> La réservation est au nom de ${
+        req.body.contact.firstName
+      } ${
+        req.body.contact.lastName
+      }</h1><p  style="font-size: 20px;"> Salon : ${req.body.shop.city}</p>
+
+      ${
+        req.body.service.id === 1
+          ? `<p  style="font-size:20px";>Les préparations sont les suivantes :</p>`
+          : ""
+      }
+      <ul style="list-style-type: none;">
+      ${
+        req.body.service.id === 1 // pour service préparation
+          ? req.body.preparations
+              .map(
+                service =>
+                  `<li style="font-size:30px; margin: 10px; list-style:none;">${
+                    service.preparations[0].titlePreparation
+                  }</li>`
+              )
+              .join(" ")
+          : ""
+      }
+
+      </ul>
+
+            ${
+              req.body.service.id === 2 // pour service table
+                ? `<p style="font-size:30px;"> La réservation est pour le service ${
+                    req.body.service.name
+                  } pour ${req.body.countTable} personnes </p>`
+                : ""
+            }
+
+
+            ${
+              req.body.service.id === 3
+                ? `
+                <p>Les préparations sont les suivantes :</p>
+                <ul>
+                ${req.body.countPreparation
+                  .map(preparation =>
+                    preparation.preparations
+                      .map(
+                        preparation =>
+                          preparation.count > 0
+                            ? `
+                    <p>
+                      ${preparation.count} ${preparation.titlePreparation}
+                    </p>`
+                            : ""
+                      )
+                      .join(" ")
+                  )
+                  .join("")}
+                    </ul>`
+                : ""
+            }
+
+                        ${
+                          req.body.service.id === 3
+                            ? `${req.body.countGender
+                                .map(
+                                  gender =>
+                                    gender.sex === "M"
+                                      ? `<p>
+                        ${gender.count > 1 ? "Ils sont" : "Il y a"} ${
+                                          gender.count
+                                        } homme${gender.count > 1 ? "s" : ""}
+                      </p>`
+                                      : "" || gender.sex === "F"
+                                        ? `<p>
+                         ${gender.count > 1 ? "Elles sont" : "Il y a"} ${
+                                            gender.count
+                                          } femme${gender.count > 1 ? "s" : ""}
+                      </p>`
+                                        : ""
+                                )
+                                .join(" ")}`
+                            : ""
+                        }
+                  
+
+      <p style="font-weight: bold; font-size:30px;"> La réservation est le ${moment(
+        req.body.timeSlot.time.s
+      ).format("dddd Do MMMM  YYYY à H:mm:ss")}</p>
+      
+      <footer><img src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png" style="height: 100px; width=300px;"/></footer>`
     },
     (error, response) => {
       if (error) {
