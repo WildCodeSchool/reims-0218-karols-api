@@ -106,7 +106,7 @@ router.get("/shops-prestations", (req, res) => {
 })
 
 router.get("/timeslots", (req, res) => {
-  res.json(new Date())
+  res.json(DateTime.local())
 })
 
 router.post("/reservations", (req, res) => {
