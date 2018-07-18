@@ -106,15 +106,7 @@ router.get("/shops-prestations", (req, res) => {
 })
 
 router.get("/timeslots", (req, res) => {
-  res.json(
-    createWeekTimeSlots(
-      DateTime.fromObject({
-        day: 27,
-        month: 7,
-        year: 2018
-      })
-    )
-  )
+  res.json(DateTime.local())
 })
 
 router.post("/reservations", (req, res) => {
