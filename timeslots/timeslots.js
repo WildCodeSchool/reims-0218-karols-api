@@ -69,7 +69,7 @@ const createWeekTimeSlots = (date, reservationData, resources) => {
             interval =>
               createTimeSlot(interval, bookingDurations, bookings, resources)
           ),
-          selectedDay: date.equals(day.plus({ days: i }))
+          selectedDay: dateSelected.equals(day.plus({ days: i }))
         })
       }
       return dayArray
