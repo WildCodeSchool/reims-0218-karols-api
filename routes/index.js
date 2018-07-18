@@ -106,6 +106,7 @@ router.get("/shops-prestations", (req, res) => {
 })
 
 router.get("/timeslots", (req, res) => {
+  console.log("test")
   res.json(DateTime.local())
 })
 
