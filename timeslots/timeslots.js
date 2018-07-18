@@ -26,8 +26,18 @@ const createWeekTimeSlots = (date, reservationData, resources) => {
   // On crée une fonction pour créer des timeslots par semaine de 5 jours
   // determiner la date du jour 1
   const dayArray = [] // declarer un tableau vide days
-  const today = DateTime.local().set({ hour: 0, minute: 00 })
-  const dateSelected = DateTime.fromISO(date).set({ hour: 0, minute: 00 })
+  const today = DateTime.local().set({
+    hour: 0,
+    minute: 00,
+    second: 0,
+    millisecond: 0
+  })
+  const dateSelected = DateTime.fromISO(date).set({
+    hour: 0,
+    minute: 00,
+    second: 0,
+    millisecond: 0
+  })
 
   const day =
     Interval.fromDateTimes(today, dateSelected).length("days") > 1
