@@ -133,7 +133,9 @@ router.post("/reservations", (req, res) => {
   console.log(req.body)
 
   let smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
+    host: "pro1.mail.ovh.net",
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.USER_EMAIL,
       pass: process.env.PASS_EMAIL
@@ -144,7 +146,7 @@ router.post("/reservations", (req, res) => {
 
   smtpTransport.sendMail(
     {
-      from: "KAROLS <marlowdevweb@gmail.com>", // Expediteur
+      from: `KAROLS <${process.env.USER_EMAIL}>`, // Expediteur
       to: `${req.body.contact.email}`, // Destinataires
       subject: `Confirmation de votre réservation à ${req.body.shop.city}`, // Sujet
       html: `<h1 style="margin-bottom: 10px;"> Hey ${
