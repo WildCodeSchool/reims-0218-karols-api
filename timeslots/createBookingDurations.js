@@ -50,12 +50,17 @@ const createBookingDurations = (booking, resources) => {
       )
     }
 
+    const people = booking.countGender.reduce(
+      (acc, value) => acc + value.count,
+      0
+    )
     // add table
     result = result.concat({
       name: "TABLES",
       type: "TABLE",
       duration: { hours: 2 },
-      count: 1
+      count: people > 6 ? 2 : 1,
+      people
     })
 
     return result

@@ -191,6 +191,7 @@ describe("createBookingDurations", () => {
         id: 3,
         selected: true
       },
+      countGender: [{ count: 5 }, { count: 2 }],
       countPreparation: [
         {
           preparations: [
@@ -262,7 +263,8 @@ describe("createBookingDurations", () => {
         name: "TABLES",
         type: "TABLE",
         duration: { hours: 2 },
-        count: 1
+        count: 2,
+        people: 7
       }
     ]
     assert.deepEqual(
