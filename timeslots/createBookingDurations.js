@@ -37,7 +37,9 @@ const createBookingDurations = (booking, resources) => {
         ).type,
         duration: element.prestaTypes.find(
           prestaType => prestaType.type === "TABLE"
-        ).duration
+        ).duration,
+        count: booking.countTable > 6 ? 2 : 1,
+        people: booking.countTable
       }))
   } else if (booking.service.id === 3) {
     let result = []
@@ -48,12 +50,17 @@ const createBookingDurations = (booking, resources) => {
       )
     }
 
+    const people = booking.countGender.reduce(
+      (acc, value) => acc + value.count,
+      0
+    )
     // add table
     result = result.concat({
       name: "TABLES",
       type: "TABLE",
       duration: { hours: 2 },
-      count: 1
+      count: people > 6 ? 2 : 1,
+      people
     })
 
     return result
