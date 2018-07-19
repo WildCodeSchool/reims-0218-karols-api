@@ -37,7 +37,9 @@ const createBookingDurations = (booking, resources) => {
         ).type,
         duration: element.prestaTypes.find(
           prestaType => prestaType.type === "TABLE"
-        ).duration
+        ).duration,
+        count: booking.countTable > 6 ? 2 : 1,
+        people: booking.countTable
       }))
   } else if (booking.service.id === 3) {
     let result = []

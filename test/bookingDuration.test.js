@@ -133,20 +133,49 @@ describe("createBookingDurations", () => {
     )
   })
 
-  it("should return an array of intervals with name and type info for a table booking", () => {
+  it("should return an array of intervals with name and type info for a table booking with number of people as quantity", () => {
     const booking = {
       service: {
         id: 2,
         name: "Table",
         selected: true
-      }
+      },
+      countTable: 6
     }
 
     const expected = [
       {
         name: "TABLES",
         type: "TABLE",
-        duration: { hours: 2 }
+        duration: { hours: 2 },
+        count: 1,
+        people: 6
+      }
+    ]
+
+    assert.deepEqual(
+      createBookingDurations(booking, exampleResources),
+      expected
+    )
+  })
+
+  it("should return an array of intervals with name and type info for a table booking with number of people as quantity", () => {
+    const booking = {
+      service: {
+        id: 2,
+        name: "Table",
+        selected: true
+      },
+      countTable: 10
+    }
+
+    const expected = [
+      {
+        name: "TABLES",
+        type: "TABLE",
+        duration: { hours: 2 },
+        count: 2,
+        people: 10
       }
     ]
 
