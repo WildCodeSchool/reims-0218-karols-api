@@ -12,8 +12,7 @@ const mongoose = require("mongoose")
 const mongo_express = require("mongo-express/lib/middleware")
 const mongo_express_config = require("./mongo_express_config")
 
-const urlMongo =
-  "mongodb://karolsdb:33b1ede1ae58adab80a615a79b256585@karolsresa.fr:4242/karolsdb"
+const urlMongo = process.env.ME_CONFIG_MONGODB_URL
 mongoose.connect(urlMongo)
 const db = mongoose.connection
 db.on("error", console.error.bind(console, "Erreur lors de la connexion"))
