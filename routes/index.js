@@ -129,8 +129,6 @@ router.post("/reservations", (req, res) => {
     })
   }
 
-  console.log(req.body)
-
   let smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -146,10 +144,10 @@ router.post("/reservations", (req, res) => {
       from: "KAROLS <marlowdevweb@gmail.com>", // Expediteur
       to: `${req.body.contact.email}`, // Destinataires
       subject: `Votre réservation KAROLS`, // Sujet
-      html: `<img src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png" style="height: 100px; width=300px; margin= auto;"/>
-      <h1 style="margin-bottom: 10px;"> Cher(e) ${req.body.contact.firstName} ${
+      html: `<img src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png" style="height: 100px; width=300px; margin:0 auto; display:block;"/>
+      <h1 style="margin-bottom: 20px;"> Cher(e) ${req.body.contact.firstName} ${
         req.body.contact.lastName
-      } !</h1><p  style="font-size: 20px; text-align: center;">Nous avons le plaisir de vous confirmer votre réservation auprès de KAROLS ${
+      } !</h1><p  style="font-size: 20px; text-align: center;margin-bottom: 10px;">Nous avons le plaisir de vous confirmer votre réservation auprès de KAROLS ${
         req.body.shop.city
       }</p>
 
@@ -158,7 +156,7 @@ router.post("/reservations", (req, res) => {
           ? `<p  style="font-size:20px; text-align: center;">Vous avez choisi :</p>`
           : ""
       }
-      <ul style="list-style-type: none;">
+      <ul style="list-style-type: none;margin-bottom: 10px;">
       ${
         req.body.service.id === 1 // pour service préparation
           ? req.body.preparations
@@ -176,17 +174,36 @@ router.post("/reservations", (req, res) => {
 
             ${
               req.body.service.id === 2 // pour service table
-                ? `<p style="font-size:30px;"> Vous avez reservé le service ${
-                    req.body.service.name
-                  } pour ${req.body.countTable} personnes </p>`
+                ? `<p style="font-size:30px;margin-bottom: 10px; text-align: center;"> 
+                Vous avez réservé une table pour ${
+                  req.body.countTable
+                } personnes </p>`
                 : ""
             }
+
+            ${
+              req.body.service.id === 3
+                ? `<div style= "text-align: center; margin-left: auto; font-size:20px;"><p style="display: inline-block; font-size:20px;">Vous avez réservé une table pour </p>`
+                : ""
+            } ${
+        req.body.service.id === 3
+          ? `${req.body.countGender
+              .map(gender => gender.count)
+              .reduce(
+                (genderCount, currentValue) => genderCount + currentValue
+              )}`
+          : ""
+      } ${
+        req.body.service.id === 3
+          ? `<p style="display: inline-block; text-align: center; font-size:20px;"> personnes ainsi que :</p>`
+          : ""
+      }</div>
 
 
             ${
               req.body.service.id === 3
                 ? `
-                <ul>
+                <ul style="margin-bottom: 10px; text-align: center;">
                 ${req.body.countPreparation
                   .map(preparation =>
                     preparation.preparations
@@ -194,10 +211,8 @@ router.post("/reservations", (req, res) => {
                         preparation =>
                           preparation.count > 0
                             ? `
-                    <p>
-                      Vous avez choisi ${preparation.count} ${
-                                preparation.titlePreparation
-                              }
+                    <p style="font-size:20px;">
+                      - ${preparation.count} ${preparation.titlePreparation}
                     </p>`
                             : ""
                       )
@@ -208,36 +223,19 @@ router.post("/reservations", (req, res) => {
                 : ""
             }
 
-            ${
-              req.body.service.id === 3
-                ? `${req.body.countGender
-                    .map(
-                      gender =>
-                        gender.sex === "M"
-                          ? `<p>
-                        Vous êtes ${gender.count} homme${
-                              gender.count > 1 ? "s" : ""
-                            }
-                      </p>`
-                          : "" || gender.sex === "F"
-                            ? `<p>
-                        Vous êtes ${gender.count} femme${
-                                gender.count > 1 ? "s" : ""
-                              }
-                      </p>`
-                            : ""
-                    )
-                    .join(" ")}`
-                : ""
-            }
+           
                   
 
-      <p style="font-weight: bold; font-size:30px;"> RDV le ${moment(
+      <p style="font-weight: bold; font-size:30px; text-align: center;margin-bottom: 20px;"> RDV le ${moment(
         req.body.timeSlot.time.s
       ).format("dddd Do MMMM  YYYY, à H:mm:ss")}.</p>
-      <p>Conseil : pensez à arriver 5 à 10 minutes en avance pour être conseillé(e) au mieux.
+      ${
+        req.body.service.id === 1 || req.body.service.id === 3
+          ? `<p style="text-align: center;font-size: 14px;margin-bottom: 20px;">Conseil : pensez à arriver 5 à 10 minutes en avance pour être conseillé(e) au mieux.
 Attention : Les retards clients ne sont pas de notre responsabilité et nous recommandons une réelle ponctualité.
-</p>
+</p>`
+          : `<p style="text-align: center;font-size: 14px;margin-bottom: 20px;">Attention : Les retards clients ne sont pas de notre responsabilité et nous recommandons une réelle ponctualité.</p>`
+      }
       `
     },
     (error, response) => {
