@@ -145,16 +145,17 @@ router.post("/reservations", (req, res) => {
     {
       from: "KAROLS <marlowdevweb@gmail.com>", // Expediteur
       to: `${req.body.contact.email}`, // Destinataires
-      subject: `Confirmation de votre réservation à ${req.body.shop.city}`, // Sujet
-      html: `<h1 style="margin-bottom: 10px;"> Hey ${
-        req.body.contact.firstName
-      } !</h1><p  style="font-size: 20px;">Vous avez réservé pour ${
+      subject: `Votre réservation KAROLS`, // Sujet
+      html: `<img src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png" style="height: 100px; width=300px; margin= auto;"/>
+      <h1 style="margin-bottom: 10px;"> Cher(e) ${req.body.contact.firstName} ${
+        req.body.contact.lastName
+      } !</h1><p  style="font-size: 20px; text-align: center;">Nous avons le plaisir de vous confirmer votre réservation auprès de KAROLS ${
         req.body.shop.city
       }</p>
 
       ${
         req.body.service.id === 1 || req.body.service.id === 3
-          ? `<p  style="font-size:20px;">Vous avez pris les préparations ci-dessous :</p>`
+          ? `<p  style="font-size:20px; text-align: center;">Vous avez choisi :</p>`
           : ""
       }
       <ul style="list-style-type: none;">
@@ -163,7 +164,7 @@ router.post("/reservations", (req, res) => {
           ? req.body.preparations
               .map(
                 service =>
-                  `<li style="font-size:30px; margin: 10px; list-style:none;">${
+                  `<li style="font-size:30px; margin: 10px; list-style:none; text-align: center;"> - ${
                     service.preparations[0].titlePreparation
                   }</li>`
               )
@@ -231,17 +232,19 @@ router.post("/reservations", (req, res) => {
             }
                   
 
-      <p style="font-weight: bold; font-size:30px;"> Vous serez pris en charge le ${moment(
+      <p style="font-weight: bold; font-size:30px;"> RDV le ${moment(
         req.body.timeSlot.time.s
-      ).format("dddd Do MMMM  YYYY à H:mm:ss")}</p>
-      
-      <footer><img src="https://image.noelshack.com/fichiers/2018/27/3/1530690032-logo-noirt.png" style="height: 100px; width=300px;"/></footer>`
+      ).format("dddd Do MMMM  YYYY, à H:mm:ss")}.</p>
+      <p>Conseil : pensez à arriver 5 à 10 minutes en avance pour être conseillé(e) au mieux.
+Attention : Les retards clients ne sont pas de notre responsabilité et nous recommandons une réelle ponctualité.
+</p>
+      `
     },
     (error, response) => {
       if (error) {
         console.log(error)
       } else {
-        console.log("Message sent: Confirmation de mail envoyée ")
+        console.log("Message sent: Confirmation de mail envoyée au client ")
       }
     }
   )
@@ -345,7 +348,7 @@ router.post("/reservations", (req, res) => {
       if (error) {
         console.log(error)
       } else {
-        console.log("Message sent: Confirmation de mail envoyée ")
+        console.log("Message sent: Confirmation de mail envoyée à l'admin ")
       }
     }
   )
