@@ -30,14 +30,6 @@ router.post("/", function(req, res) {
   res.send("POST request to the homepage")
 })
 
-router.get("/shops", (req, res) => {
-  // get the shops collection
-  Shop.find()
-    .sort({ id: 1 })
-    .then(shops => res.json(shops))
-    .catch(err => res.send(err))
-})
-
 router.get("/prestations", (req, res) => {
   //get the prestations collection
   Prestation.find({})
@@ -355,15 +347,6 @@ Attention : Les retards clients ne sont pas de notre responsabilité et nous rec
   )
 })
 
-router.delete("/bookings/:id", (req, res) => {
-  console.log(req.params.id)
-  //Booking.map(booking => console.log(booking.id))
-  Booking.deleteOne({ _id: req.params.id }).then(() =>
-    res.json({ bookingId: req.params.id })
-  )
-  //res.send(console.log(Booking))
-})
-
 router.post("/date-selected/:date", (req, res) => {
   if (req.body.shop) {
     Resource.find({ city: req.body.shop.city })
@@ -387,9 +370,26 @@ const basic = auth.basic(
   },
   function(username, password, callback) {
     // Custom authentication method.
-    callback(username === "admin" && password === "pass")
+    callback(username === "admin" && password === process.env.ME_CONFIG_BASICAUTH_PASSWORD)
   }
 )
+
+router.get("/shops", auth.connect(basic), (req, res) => {
+  // get the shops collection
+  Shop.find()
+    .sort({ id: 1 })
+    .then(shops => res.json(shops))
+    .catch(err => res.send(err))
+})
+
+router.delete("/bookings/:id", auth.connect(basic), (req, res) => {
+  console.log(req.params.id)
+  //Booking.map(booking => console.log(booking.id))
+  Booking.deleteOne({ _id: req.params.id }).then(() =>
+    res.json({ bookingId: req.params.id })
+  )
+  //res.send(console.log(Booking))
+})
 
 router.get("/bookings/:city", auth.connect(basic), (req, res) => {
   //find bookings by city
