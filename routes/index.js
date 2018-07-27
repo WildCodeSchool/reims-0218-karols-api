@@ -375,7 +375,20 @@ router.post("/date-selected/:date", (req, res) => {
   }
 })
 
-router.get("/bookings/:city", (req, res) => {
+// Admin section
+
+const auth = require("http-auth")
+const basic = auth.basic(
+  {
+    realm: "Protected Area"
+  },
+  function(username, password, callback) {
+    // Custom authentication method.
+    callback(username === "admin" && password === "pass")
+  }
+)
+
+router.get("/bookings/:city", auth.connect(basic), (req, res) => {
   //find bookings by city
   const cityParam = req.params.city
   const cityName =
