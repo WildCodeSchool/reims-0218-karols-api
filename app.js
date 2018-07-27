@@ -32,9 +32,20 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "public")))
 
+const whitelist = [
+  "https://admin.karolsresa.fr",
+  "https://reservation.karolsresa.fr"
+]
+
 app.use(
   cors({
-    origin: "https://karolsresa.fr",
+    origin: function(origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error("Not allowed by CORS"))
+      }
+    },
     credentials: true
   })
 )
