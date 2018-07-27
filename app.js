@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, "public")))
 
 app.use(
   cors({
-    origin: "karolsresa.fr",
+    origin: "https://karolsresa.fr",
     credentials: true
   })
 )
