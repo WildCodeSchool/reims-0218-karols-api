@@ -39,7 +39,8 @@ app.use("/users", usersRouter)
 app.use("/mongo_express", mongo_express(mongo_express_config))
 
 app.all("/*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Origin", "*.karolsresa.fr")
+  res.header("Access-Control-Allow-Credentials", true)
   res.header("Access-Control-Allow-Headers", "X-Requested-With")
   next()
 }) // Juste pour autoriser l'adresse des prestations.json sur l'autre port (8000)
